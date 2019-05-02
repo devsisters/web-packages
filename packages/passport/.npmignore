@@ -1,0 +1,5 @@
+/node_modules
+/tsconfig.json
+/.editorconfig
+*.ts
+!*.d.ts

@@ -1,0 +1,21 @@
+{
+  "name": "@devsisters/gatsby-plugin-sentry",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm install && npm run build"
+  },
+  "author": "Devsisters Corp.",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.2.2",
+    "@sentry/browser": "^4.4.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.7.17",
+    "typescript": "^3.2.2"
+  }
+}
