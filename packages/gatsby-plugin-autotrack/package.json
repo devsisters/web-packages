@@ -1,0 +1,25 @@
+{
+  "name": "@devsisters/gatsby-plugin-autotrack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm install && npm run build"
+  },
+  "author": "Devsisters Corp.",
+  "license": "UNLICENSED",
+  "peerDependencies": {
+    "@devsisters/gatsby-plugin-google-analytics": "1.x",
+    "@devsisters/gatsby-plugin-matomo": ">= 1.1.0 < 2"
+  },
+  "dependencies": {
+    "element-closest": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^11.13.9",
+    "@types/react": "^16.8.15",
+    "typescript": "^3.4.5"
+  }
+}
