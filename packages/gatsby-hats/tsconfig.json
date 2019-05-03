@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "outDir": "lib",
+    "declaration": true,
+    "lib": [
+      "dom",
+      "es2018"
+    ],
+    "strict": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": [
+    "lib",
+    "node_modules"
+  ]
+}
