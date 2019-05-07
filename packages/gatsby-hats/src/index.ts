@@ -48,13 +48,13 @@ interface HatsConfig {
    * 자동 추적코드에 대한 설명은 [여기](https://www.notion.so/devsisters/gatsby-plugin-autotrack-bced9c0bc9bb4ff58283b0006a182dd4)를 보세요.
    */
   autotrack?: boolean;
-  googleAnalytics?: {
+  googleAnalytics?: false | {
     /**
      * `UA-XXXXXXXX-XX` 요런 모양으로 생긴 ID를 적어주세요.
      */
     trackingId: string;
   };
-  matomo?: {
+  matomo?: false | {
     /**
      * 로깅서버 url을 적어주세요.
      */
@@ -64,7 +64,7 @@ interface HatsConfig {
      */
     siteId: string;
   };
-  sentry?: {
+  sentry?: false | {
     /**
      * `https://abcdef0123456789abcdef0123456789@sentry.io/1234567`
      * 요런 모양으로 생긴 url을 적어주세요.
