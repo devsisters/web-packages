@@ -10,6 +10,9 @@
   },
   "author": "Devsisters Corp.",
   "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@devsisters/dotenv": "^1.0.0",
     "@devsisters/gatsby-plugin-autotrack": "^1.0.0",

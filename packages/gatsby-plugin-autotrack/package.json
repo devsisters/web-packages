@@ -10,6 +10,9 @@
   },
   "author": "Devsisters Corp.",
   "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "@devsisters/gatsby-plugin-google-analytics": "1.x",
     "@devsisters/gatsby-plugin-matomo": ">= 1.1.0 < 2"

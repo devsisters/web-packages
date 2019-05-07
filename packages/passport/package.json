@@ -10,6 +10,9 @@
   },
   "author": "Devsisters Corp.",
   "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "keycloak-connect": "4.4.0",
     "keycloak-js": "4.4.0"

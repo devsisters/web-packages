@@ -10,6 +10,9 @@
   },
   "author": "Devsisters Corp.",
   "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^11.13.0",
