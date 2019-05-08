@@ -34,6 +34,10 @@ export default function getHats(config: HatsConfig): GatsbyPlugin[] {
       },
     });
   }
+  plugins.push(
+    { resolve: 'gatsby-plugin-react-helmet' },
+    { resolve: 'gatsby-plugin-sitemap' },
+  );
   return plugins;
 }
 
