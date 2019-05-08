@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-hats",
-  "version": "1.0.1",
+  "version": "1.2.3",
   "description": "",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@devsisters/dotenv": "^1.0.0",
-    "@devsisters/gatsby-plugin-autotrack": "^1.0.0",
+    "@devsisters/gatsby-plugin-autotrack": "^1.2.3",
     "@devsisters/gatsby-plugin-google-analytics": "^1.0.1",
     "@devsisters/gatsby-plugin-matomo": "^1.1.0",
     "@devsisters/gatsby-plugin-sentry": "^1.0.0"

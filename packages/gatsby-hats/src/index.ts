@@ -1,4 +1,7 @@
 export default function getHats(config: HatsConfig): GatsbyPlugin[] {
+  // 이 배열의 뒤쪽에 있을 수록 나중에 감싸집니다.
+  // 나중에 감싸진다는 것은 렌더트리의 바깥에 있다는 뜻이기 때문에
+  // 나중에 감싸진 플러그인의 `onClientEntry` 훅이 먼저 불립니다.
   const plugins: GatsbyPlugin[] = [
     { resolve: '@devsisters/dotenv' },
   ];

@@ -1,5 +1,8 @@
 // Element#closest polyfill
-require('element-closest')();
+import polyfill from 'element-closest';
+if (typeof window !== 'undefined') polyfill(window);
+
+import { onhashchange } from '.';
 
 declare global {
   interface Window {
@@ -23,15 +26,34 @@ function trackEvent(category: string, action: string, name?: string) {
   }
 }
 
+const visitedHashs: Set<string> = new Set();
+
 export const onClientEntry = () => {
-  trackEvent('autotrack-entry', 'entry');
+  { // 사이트 접속 추적
+    // pathname이 변경된 것은 사이트 접속으로 보지 않음.
+    trackEvent('autotrack-entry', 'entry');
+  }
   window.addEventListener('click', e => {
     const target = e.target as Element;
     if (!target || !target.closest) return;
     const elementThatHasId = target.closest('[id]');
     if (!elementThatHasId) return;
-    trackEvent('autotrack-click', 'click', elementThatHasId.id);
+    const { id } = elementThatHasId;
+    if (id === '___gatsby') return;
+    trackEvent('autotrack-click', 'click', id);
   }, true);
+  { // 페이지의 어디까지 방문했는지 확인하기 위해서 location.hash 변동을 추적함.
+    let timerId: ReturnType<typeof window['setTimeout']>;
+    onhashchange(hash => {
+      window.clearTimeout(timerId);
+      if (!hash || visitedHashs.has(hash)) return;
+      // hash가 변경되고 0.5초 이상 그대로 유지될 경우 사용자가 유의미하게 해당 화면을 방문했다고 간주함.
+      timerId = window.setTimeout(() => {
+        visitedHashs.add(hash);
+        trackEvent('autotrack-visit', 'hash', hash);
+      }, 500);
+    });
+  }
 };
 
 interface OnRouteUpdate {
@@ -39,22 +61,12 @@ interface OnRouteUpdate {
     { location, prevLocation }: { location: Location, prevLocation: Location },
     pluginOptions: any
   ): void;
-  visitedHashs: Set<string>;
 }
 export const onRouteUpdate: OnRouteUpdate = ({ location, prevLocation }) => {
-  const { visitedHashs } = onRouteUpdate;
   // 어차피 pageview는 gatsby-plugin-google-analytics와 gatsby-plugin-matomo 에서 전용 api를 따로 호출함.
   // 그래서 따로 트래킹할 필요는 없으나 편의상 이벤트로도 넣음.
-  if (location.pathname !== prevLocation.pathname) {
+  if (!prevLocation || location.pathname !== prevLocation.pathname) {
     trackEvent('autotrack-pageview', 'pageview');
     visitedHashs.clear();
   }
-  // 페이지의 어디까지 방문했는지 확인하기 위해서 location.hash 변동을 추적함.
-  if (!location.hash) return;
-  if (!visitedHashs.size || location.hash !== prevLocation.hash) {
-    if (visitedHashs.has(location.hash)) return;
-    visitedHashs.add(location.hash);
-    trackEvent('autotrack-visit', 'hash', location.hash);
-  }
 };
-onRouteUpdate.visitedHashs = new Set();
