@@ -34,6 +34,13 @@ export default function getHats(config: HatsConfig): GatsbyPlugin[] {
       },
     });
   }
+  if (config.i18n) {
+    plugins.push(Object.assign({
+      resolve: '@devsisters/gatsby-plugin-i18n',
+    }, typeof config.i18n === 'object' && {
+      options: config.i18n,
+    }));
+  }
   plugins.push(
     { resolve: 'gatsby-plugin-react-helmet' },
     { resolve: 'gatsby-plugin-sitemap' },
@@ -47,6 +54,16 @@ export const matomoTrackerUrls = {
 };
 
 interface HatsConfig {
+  /**
+   * 사이트 다국어 지원 여부입니다.
+   * `true`를 넣으면 기본 설정을 사용합니다.
+   * 
+   * 자세한 내용은 [문서](https://www.notion.so/devsisters/gatsby-plugin-i18n-8cab9382aa7f4dfa9e5d2015200d062a)를 참고하세요.
+  */
+  i18n?: boolean | {
+    pagesPath: string;
+    translationsPath: string;
+  };
   /**
    * 자동 추적코드 삽입 여부입니다. (google analytics, matomo)
    * 
