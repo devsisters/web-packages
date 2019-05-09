@@ -36,11 +36,9 @@ export const onClientEntry = () => {
   window.addEventListener('click', e => {
     const target = e.target as Element;
     if (!target || !target.closest) return;
-    const elementThatHasId = target.closest('[id]');
-    if (!elementThatHasId) return;
-    const { id } = elementThatHasId;
-    if (id === '___gatsby') return;
-    trackEvent('autotrack-click', 'click', id);
+    const element = target.closest('a[id], button[id], input[id]');
+    if (!element) return;
+    trackEvent('autotrack-click', 'click', element.id);
   }, true);
   { // 페이지의 어디까지 방문했는지 확인하기 위해서 location.hash 변동을 추적함.
     let timerId: ReturnType<typeof window['setTimeout']>;
