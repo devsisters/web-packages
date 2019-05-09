@@ -26,12 +26,10 @@ function trackEvent(category: string, action: string, name?: string) {
   }
 }
 
-const visitedHashs: Set<string> = new Set();
-
 export const onClientEntry = () => {
   { // 사이트 접속 추적
     // pathname이 변경된 것은 사이트 접속으로 보지 않음.
-    trackEvent('autotrack-entry', 'entry');
+    trackEvent('autotrack-entry', 'entry', location.pathname);
   }
   window.addEventListener('click', e => {
     const target = e.target as Element;
@@ -44,10 +42,9 @@ export const onClientEntry = () => {
     let timerId: ReturnType<typeof window['setTimeout']>;
     onhashchange(hash => {
       window.clearTimeout(timerId);
-      if (!hash || visitedHashs.has(hash)) return;
+      if (!hash) return;
       // hash가 변경되고 0.5초 이상 그대로 유지될 경우 사용자가 유의미하게 해당 화면을 방문했다고 간주함.
       timerId = window.setTimeout(() => {
-        visitedHashs.add(hash);
         trackEvent('autotrack-visit', 'hash', hash);
       }, 500);
     });
@@ -64,7 +61,6 @@ export const onRouteUpdate: OnRouteUpdate = ({ location, prevLocation }) => {
   // 어차피 pageview는 gatsby-plugin-google-analytics와 gatsby-plugin-matomo 에서 전용 api를 따로 호출함.
   // 그래서 따로 트래킹할 필요는 없으나 편의상 이벤트로도 넣음.
   if (!prevLocation || location.pathname !== prevLocation.pathname) {
-    trackEvent('autotrack-pageview', 'pageview');
-    visitedHashs.clear();
+    trackEvent('autotrack-pageview', 'pageview', location.pathname);
   }
 };
