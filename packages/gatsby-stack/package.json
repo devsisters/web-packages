@@ -1,0 +1,27 @@
+{
+  "name": "@devsisters/gatsby-stack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm install && npm run build"
+  },
+  "author": "Devsisters Corp.",
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "gatsby-plugin-linaria": "^1.1.1",
+    "gatsby-plugin-sass": "^2.0.11",
+    "gatsby-plugin-typescript": "^2.0.13",
+    "linaria": "^1.3.1",
+    "node-sass": "^4.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.0",
+    "typescript": "^3.4.5"
+  }
+}

@@ -9,5 +9,12 @@ export const onRenderBody = ({ setHeadComponents }: any, pluginOptions: any) => 
     'https://public.devscookie.com/piwik.js';
   setHeadComponents([
     <script key="piwik-js" src={piwikSrc}/>,
+    <script key="piwik-js-init" dangerouslySetInnerHTML={{ __html: `
+      window.piwik = window.Piwik.getTracker(${
+        JSON.stringify(trackerUrl)
+      }, ${
+        JSON.stringify(siteId)
+      });
+    ` }}/>,
   ]);
 };

@@ -10,6 +10,9 @@
   },
   "author": "Devsisters Corp.",
   "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {},
   "devDependencies": {
     "@types/react": "^16.7.17",
