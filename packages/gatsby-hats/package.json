@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-hats",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -17,7 +17,7 @@
     "@devsisters/dotenv": "^1.0.0",
     "@devsisters/gatsby-plugin-autotrack": "^1.4.0",
     "@devsisters/gatsby-plugin-google-analytics": "^1.0.1",
-    "@devsisters/gatsby-plugin-i18n": "^2.0.0",
+    "@devsisters/gatsby-plugin-i18n": "^2.1.0",
     "@devsisters/gatsby-plugin-matomo": "^1.1.0",
     "@devsisters/gatsby-plugin-sentry": "^1.0.0",
     "@types/react-helmet": "^5.0.8",
