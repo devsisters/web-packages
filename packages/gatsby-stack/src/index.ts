@@ -13,6 +13,15 @@ export default function getStack(): GatsbyPlugin[] {
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-module-resolver',
+      options: {
+        root: './',
+        aliases: {
+          '~': '.',
+        },
+      },
+    },
   ];
   return plugins;
 }
