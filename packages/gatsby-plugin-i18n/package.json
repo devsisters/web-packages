@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-plugin-i18n",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "gatsby plugin for i18n",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -18,20 +18,20 @@
   },
   "dependencies": {
     "bcp-47": "^1.0.4",
-    "chokidar": "^2.0.4",
+    "chokidar": "^3.0.0",
     "core-js-pure": "^3.0.0-beta.6",
     "js-yaml": "^3.12.0",
     "lodash.memoize": "^4.1.2",
     "recursive-readdir": "^2.2.2"
   },
   "devDependencies": {
-    "@types/lodash.memoize": "^4.1.4",
     "@types/chokidar": "^1.7.5",
-    "@types/js-yaml": "^3.11.2",
-    "@types/node": "^10.12.12",
-    "@types/react": "^16.7.17",
+    "@types/js-yaml": "^3.12.1",
+    "@types/lodash.memoize": "^4.1.6",
+    "@types/node": "^10.14.7",
+    "@types/react": "^16.8.18",
     "@types/recursive-readdir": "^2.2.0",
-    "gatsby": "^2.0.67",
-    "typescript": "^3.2.2"
+    "gatsby": "^2.6.3",
+    "typescript": "^3.4.5"
   }
 }
