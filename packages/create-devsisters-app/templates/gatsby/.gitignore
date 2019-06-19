@@ -1,0 +1,8 @@
+.DS_Store
+
+/node_modules
+/public
+/.cache
+/.linaria-cache
+
+/.env/.env*.local

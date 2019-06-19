@@ -1,0 +1,31 @@
+{
+  "name": "create-devsisters-app",
+  "version": "0.0.0",
+  "description": "",
+  "bin": "cli.js",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm install && npm run build"
+  },
+  "author": "Devsisters Corp.",
+  "license": "UNLICENSED",
+  "files": [
+    "/cli.js",
+    "/dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "inquirer": "^6.3.1",
+    "make-dir": "^3.0.0",
+    "mustache": "^3.0.1",
+    "yargs": "^13.2.4"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^6.0.3",
+    "@types/mustache": "^0.8.32",
+    "@types/yargs": "^13.0.0",
+    "typescript": "^3.5.2"
+  }
+}
