@@ -1,6 +1,6 @@
 {
   "name": "create-devsisters-app",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "",
   "bin": "cli.js",
   "scripts": {
@@ -9,10 +9,6 @@
   },
   "author": "Devsisters Corp.",
   "license": "UNLICENSED",
-  "files": [
-    "/cli.js",
-    "/dist"
-  ],
   "publishConfig": {
     "access": "public"
   },

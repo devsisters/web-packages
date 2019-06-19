@@ -54,5 +54,9 @@ export const run: RunProcess = async () => {
     );
     return Buffer.from(result, 'utf-8');
   });
+  { // npm에 `.gitignore`파일은 올라가지 않으므로 `.gitignore.template` 파일을 만들어서 우회.
+    fileTree['.gitignore'] = fileTree['.gitignore.template'];
+    delete fileTree['.gitignore.template'];
+  }
   await writeAll(path.resolve(projectName), fileTree);
 };
