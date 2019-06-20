@@ -13,6 +13,9 @@ import {
   mapFiles,
 } from '../fs-util';
 import {
+  spawn,
+} from '../cp-util';
+import {
   validateKebab,
   kebab2pascal,
   kebab2camel,
@@ -58,5 +61,8 @@ export const run: RunProcess = async () => {
     fileTree['.gitignore'] = fileTree['.gitignore.template'];
     delete fileTree['.gitignore.template'];
   }
-  await writeAll(path.resolve(projectName), fileTree);
+  const cwd = path.resolve(projectName);
+  await writeAll(cwd, fileTree);
+  await spawn('git init', { cwd });
+  await spawn('npm install', { cwd });
 };
