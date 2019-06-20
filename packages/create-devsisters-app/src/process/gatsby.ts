@@ -65,4 +65,5 @@ export const run: RunProcess = async () => {
   await writeAll(cwd, fileTree);
   await spawn('git init', { cwd });
   await spawn('npm install', { cwd });
+  process.exit(0);
 };
