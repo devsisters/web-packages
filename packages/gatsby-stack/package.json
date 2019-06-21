@@ -14,7 +14,7 @@
     "access": "public"
   },
   "dependencies": {
-    "gatsby-plugin-linaria": "^1.1.1",
+    "gatsby-plugin-linaria": "^1.2.0",
     "gatsby-plugin-module-resolver": "^1.0.3",
     "gatsby-plugin-sass": "^2.0.11",
     "gatsby-plugin-typescript": "^2.0.13",
