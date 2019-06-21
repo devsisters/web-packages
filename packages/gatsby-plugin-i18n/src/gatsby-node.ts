@@ -3,7 +3,7 @@ import path from 'path';
 import YAML from 'yaml';
 import readdir from 'recursive-readdir';
 
-import { GatsbyI18nPluginOptions, LocalizationData } from './types';
+import { GatsbyI18nPluginOptions, LocalizationData, LocalizedResources, Translations } from './types';
 
 function mustValidOptions(options: unknown): GatsbyI18nPluginOptions {
   const {
@@ -81,6 +81,14 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql 
 
   const filePaths = await readdir(i18nOptions.pagesPath);
   const l10ns: LocalizationData[] = data.allLocalization.nodes
+  const translations = Object.fromEntries(
+    l10ns.map(({locale, translations}) => [
+      locale,
+      Object.fromEntries(
+        translations.map(({key, value}) => [key, value])
+      ) as LocalizedResources,
+    ])
+  ) as Translations;
 
   l10ns
     .map(l10n => l10n.locale)
@@ -97,7 +105,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql 
       return {
         path: slug,
         component: filePath,
-        context: { locale },
+        context: { locale, translations },
       }
     })
     .forEach(pageProp => createPage(pageProp))

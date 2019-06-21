@@ -3,6 +3,7 @@ import React from 'react';
 import raw from 'core-js-pure/features/string/raw';
 
 import { Translations } from './types';
+import { useStaticQuery, graphql } from 'gatsby';
 
 export interface I18nContext {
   locale: string;
@@ -17,7 +18,7 @@ export const i18nContext = React.createContext<I18nContext>({
 
 export const useI18n = () => {
   return React.useContext(i18nContext);
-}
+};
 
 export const useLocale = () => {
   const { locale } = useI18n();
@@ -27,7 +28,7 @@ export const useLocale = () => {
 export const useLocaleString = () => {
   console.warn('useLocaleString() was deprecated. Use useLocale() instead.');
   return useLocale();
-}
+};
 
 export const useTexts = (locale?: string) => {
   const { translations, locale: contextLocaleString } = useI18n();
