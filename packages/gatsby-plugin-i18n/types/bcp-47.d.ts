@@ -16,5 +16,5 @@ declare module 'bcp-47' {
     warning?: boolean;
   }
   export function parse(string: string, options?: ParseOptions): Schema;
-  export function stringify(schema: Schema): string;
+  export function stringify(schema: Partial<Schema>): string;
 }

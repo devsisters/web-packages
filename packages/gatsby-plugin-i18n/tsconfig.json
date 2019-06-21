@@ -2,16 +2,16 @@
   "compilerOptions": {
     "outDir": "./",
     "module": "commonjs",
-    "target": "es5",
+    "target": "es6",
     "lib": [
-      "es2015",
-      "es2016",
-      "es2017",
+      "esnext",
       "dom"
     ],
     "removeComments": false,
     "strict": true,
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "declaration": true,
     "jsx": "react",
     "types": [

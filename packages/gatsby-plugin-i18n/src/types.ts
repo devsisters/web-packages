@@ -1,44 +1,21 @@
-export interface PageInput {
-  path: string;
-  component: string;
-  layout?: string;
-  context?: any;
-}
-
-export interface Actions {
-  createNode: (options: {
-    id: string;
-    parent: string | null;
-    children: string[];
-    internal: {
-      mediaType?: string;
-      type: string;
-      content?: string;
-      contentDigest: string;
-      description?: string;
-    };
-  }) => void;
-  createPage: (page: PageInput) => void;
-  deletePage: (page: PageInput) => void;
-  createRedirect: (
-    opts: {
-      fromPath: string;
-      isPermanent?: boolean;
-      redirectInBrowser?: boolean;
-      toPath: string;
-    }
-  ) => void;
-  setWebpackConfig: any;
-}
-
-export interface PluginOptions {
-  pagesPath?: string;
-  translationsPath?: string;
+export interface GatsbyI18nPluginOptions {
+  pagesPath: string;
+  translationsPath: string;
   languages: string[];
 }
 
-type GatsbyHook<T> = (fns: T & { actions: Actions }, options: PluginOptions, done: any) => Promise<any>;
+export interface LocalizationData {
+  locale: string;
+  translations: {
+    key: string;
+    value: string;
+  }[];
+}
+// will be transformed into
+export interface LocalizedResources {
+  [key: string]: string;
+}
 
-export type GatsbyCreatePagesStatefully = GatsbyHook<{ store: any }>;
-
-export type GatsbyOnCreatePage = GatsbyHook<{ page: PageInput }>;
+export interface Translations {
+  [locale: string]: LocalizedResources;
+}
