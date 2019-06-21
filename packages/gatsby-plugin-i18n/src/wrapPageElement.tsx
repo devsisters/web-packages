@@ -1,32 +1,25 @@
-import * as React from 'react';
-import memoize = require('lodash.memoize');
+import React from 'react';
+import { GatsbyBrowser, GatsbySSR } from 'gatsby';
 
-import { i18nContext, I18nContext, Locale, Translations, I18nPageContext } from './index';
+import { i18nContext, I18nContext } from './index';
 
-type Props = {
-  element: React.ReactNode;
-  props: I18nPageContext & {
-    location: Location;
-  };
+type WrapPageElement =
+  | GatsbyBrowser['wrapPageElement']
+  | GatsbySSR['wrapPageElement']
+
+interface PageWrapperProps {
+  pageContext: I18nContext;
 }
-const defaultLocaleObject = { language: 'ko', script: null, region: null };
-const emptyObject = {};
-const getState = memoize(
-  (locale: Locale, translations: Translations): I18nContext => ({
-    locale,
-    translations,
-  })
-);
-const wrapPageElement: React.FC<Props> = ({ element, props: { pageContext } }) => {
-  const {
-    locale = defaultLocaleObject,
-    translations = emptyObject,
-  } = pageContext || (emptyObject as any);
-  return (
-    <i18nContext.Provider value={getState(locale, translations)}>
+
+const wrapPageElement: WrapPageElement = ({ element, props }) => {
+  const { pageContext } = props as PageWrapperProps;
+  const { locale, translations } = pageContext;
+
+  return locale && translations ? (
+    <i18nContext.Provider value={{ locale, translations }}>
       {element}
     </i18nContext.Provider>
-  );
+  ) : element;
 }
 
 export default wrapPageElement;

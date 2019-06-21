@@ -16,22 +16,23 @@
   "publishConfig": {
     "access": "public"
   },
+  "peerDependencies": {
+    "gatsby": ">=2.0.0"
+  },
   "dependencies": {
-    "bcp-47": "^1.0.4",
     "chokidar": "^3.0.0",
     "core-js-pure": "^3.0.0-beta.6",
-    "js-yaml": "^3.12.0",
     "lodash.memoize": "^4.1.2",
-    "recursive-readdir": "^2.2.2"
+    "recursive-readdir": "^2.2.2",
+    "yaml": "^1.6.0"
   },
   "devDependencies": {
-    "@types/lodash.memoize": "^4.1.4",
-    "@types/chokidar": "^1.7.5",
     "@types/js-yaml": "^3.11.2",
-    "@types/node": "^10.12.12",
+    "@types/node": "^10.14.9",
     "@types/react": "^16.7.17",
     "@types/recursive-readdir": "^2.2.0",
-    "gatsby": "^2.0.67",
-    "typescript": "^3.2.2"
+    "@types/yaml": "^1.0.2",
+    "gatsby": "^2.10.0",
+    "typescript": "^3.5.2"
   }
 }

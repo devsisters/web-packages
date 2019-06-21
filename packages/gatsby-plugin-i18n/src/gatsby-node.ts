@@ -1,140 +1,117 @@
-import * as path from 'path';
-import * as fs from 'fs';
-// todo: replace glob
-import readDir = require('recursive-readdir');
-import chokidar = require('chokidar');
-import yaml = require('js-yaml');
-import memoize = require('lodash.memoize');
+import { GatsbyNode, Node } from 'gatsby';
+import path from 'path';
+import YAML from 'yaml';
+import readdir from 'recursive-readdir';
 
 import {
-  GatsbyOnCreatePage,
-  PluginOptions,
-  GatsbyCreatePagesStatefully,
-  PageInput,
+  GatsbyI18nPluginOptions,
+  LocalizationData,
+  LocalizedResources,
+  Translations,
 } from './types';
-import { Translations, toLocaleObject } from './index';
 
-export const createPagesStatefully: GatsbyCreatePagesStatefully = async ({ actions, store }, options, done) => {
-  const pagesPath = getPagesPath(options);
-  const translationsPath = getTranslationsPath(options);
-  const { createPage, deletePage } = actions;
+function mustValidOptions(options: unknown): GatsbyI18nPluginOptions {
+  const {
+    languages,
+    pagesPath = 'src/@pages',
+    translationsPath = 'src/translations',
+  } = options as GatsbyI18nPluginOptions
 
-  const translationFilepaths = await readDir(translationsPath);
-  const localeStrings = translationFilepaths.map(
-    filename => removeExtension(filename.substr(translationsPath.length + 1))
-  );
-  const toUrlPath = (filepath: string): string => {
-    const filename = removePageExtension(filepath.substr(pagesPath.length));
-    return removeTrailingSlash(
-      filename.endsWith('index') ? filename.slice(0, -5) : filename
-    );
-  }
-  const toI18nPaths = (filepath: string): string[] => {
-    const urlPath = toUrlPath(filepath);
-    return localeStrings.map(localeString => `${localeString}${urlPath}`);
+  if (!languages || languages.length <= 0) {
+    throw new Error('Plugin options must be valid');
   }
 
-  const createI18nPage = (filepath: string) => {
-    const i18nPaths = toI18nPaths(filepath);
-    return Promise.all(
-      i18nPaths.map(async (path, index) => {
-        const locale = toLocaleObject(localeStrings[index]);
-        createPage({
-          path,
-          component: filepath,
-          context: {
-            locale,
-            translations: await loadTranslations(translationsPath),
-          },
-        });
-      })
-    );
+  return {
+    languages,
+    pagesPath: path.resolve(process.cwd(), pagesPath),
+    translationsPath: path.resolve(process.cwd(), translationsPath),
+  };
+}
+
+export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
+  node,
+  actions,
+  loadNodeContent,
+  createNodeId,
+  createContentDigest,
+}, options) => {
+  const i18nOptions = mustValidOptions(options);
+  const { createNode, createParentChildLink } = actions;
+
+  if (node.internal.mediaType !== 'text/yaml'
+    && node.dir !== i18nOptions.translationsPath) {
+    return
   }
 
-  try {
-    const files = await readDir(pagesPath);
-    await Promise.all(
-      files
-        .filter(filepath => filepath.match(/\.page\.(js|ts)x?$/))
-        .map(createI18nPage)
-    );
-  } catch (error) {
-    errorLog(`Failed to read directory '${pagesPath}'`);
-    console.error(error);
-    return;
+  const content = await loadNodeContent(node);
+  const parsedContent = YAML.parse(content) as LocalizationData;
+
+  type LocalizationNode = Node & LocalizationData
+  const localizationNode: LocalizationNode = {
+    locale: node.name!,
+    translations: Object.entries(parsedContent).map(([key, value]) => ({ key, value })),
+    id: createNodeId(`${node.id} >>> Localization`),
+    parent: node.id,
+    children: [],
+    internal: {
+      contentDigest: createContentDigest(parsedContent),
+      type: 'Localization',
+    } as any,
   }
 
-  chokidar
-    // todo: read extensions from gatsby program
-    .watch(`${pagesPath}/**/*.page.{js,jsx,ts,tsx}`)
-    .on('add', createI18nPage)
-    .on('unlink', (filepath) => {
-      store.getState().pages.forEach((page: PageInput) => {
-        if (page.component !== filepath) {
-          return;
+  createNode(localizationNode)
+  createParentChildLink({ parent: node, child: localizationNode })
+};
+
+export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql }, options) => {
+  const i18nOptions = mustValidOptions(options);
+  const { createPage } = actions;
+
+  const { data, errors } = await graphql(`
+    {
+      allLocalization {
+        nodes {
+          locale
+          translations {
+            key
+            value
+          }
         }
-        const i18nPaths = toI18nPaths(filepath);
-        i18nPaths.forEach(i18nPath => {
-          deletePage({
-            ...page,
-            path: i18nPath,
-          });
-        });
-      });
-    })
-    .on('ready', done);
-};
-
-export const onCreatePage: GatsbyOnCreatePage = async ({ page, actions }, options) => {
-  // inject translations to non-i18n pages
-  if (page.context && page.context.i18nTranslations) {
-    return;
+      }
+    }
+  `)
+  if (errors) {
+    throw new Error('Failed to query for allLocalizations');
   }
-  const { deletePage, createPage } = actions;
-  const translationsPath = getTranslationsPath(options);
-  deletePage(page);
-  createPage({
-    ...page,
-    context: {
-      ...page.context,
-      translations: await loadTranslations(translationsPath),
-    },
-  });
+
+  const filePaths = await readdir(i18nOptions.pagesPath);
+  const l10ns: LocalizationData[] = data.allLocalization.nodes
+  const translations = Object.fromEntries(
+    l10ns.map(({locale, translations}) => [
+      locale,
+      Object.fromEntries(
+        translations.map(({key, value}) => [key, value])
+      ) as LocalizedResources,
+    ])
+  ) as Translations;
+
+  l10ns
+    .map(l10n => l10n.locale)
+    .map(locale => filePaths.map(filePath => [locale, filePath]))
+    .flat()
+    .map(([locale, filePath]) => {
+      const [name] = path.basename(filePath).split('.');
+
+      let slug = `/${locale}`;
+      if (name !== 'index') {
+        slug += `/${name}`
+      }
+
+      return {
+        path: slug,
+        component: filePath,
+        context: { locale, translations },
+      }
+    })
+    .forEach(pageProp => createPage(pageProp))
 };
-
-const getTranslationsPath = memoize(
-  (option: PluginOptions): string =>
-    path.resolve(option.translationsPath || './src/translations')
-);
-
-const getPagesPath = memoize(
-  (option: PluginOptions): string => path.resolve(option.pagesPath || './src/@pages')
-);
-
-const loadTranslations = memoize(async (path: string): Promise<Translations> => {
-  const files = await readDir(path);
-  return files.reduce<{ [key: string]: any }>((_translations, filepath) => {
-    const translation = yaml.load(fs.readFileSync(filepath).toString());
-    const key = removeExtension(filepath.substr(path.length + 1));
-    _translations[key] = translation;
-    return _translations;
-  }, {});
-});
-
-const errorLog = (message: string): void =>
-  console.error(`\x1b[41m\x1b[37m${message}\x1b[0m`);
-
-const removeExtension = (filename: string): string =>
-  filename
-    .split('.')
-    .slice(0, -1)
-    .join('.');
-
-const removePageExtension = (filename: string): string =>
-  filename
-    .split('.')
-    .slice(0, -2)
-    .join('.');
-
-const removeTrailingSlash = (pathname: string): string => 
-  pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
