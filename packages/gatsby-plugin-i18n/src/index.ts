@@ -3,7 +3,6 @@ import React from 'react';
 import raw from 'core-js-pure/features/string/raw';
 
 import { Translations } from './types';
-import { useStaticQuery, graphql } from 'gatsby';
 
 export interface I18nContext {
   locale: string;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GatsbyBrowser, GatsbySSR, graphql, StaticQuery } from 'gatsby';
+import { GatsbyBrowser, GatsbySSR } from 'gatsby';
 
 import { i18nContext, I18nContext } from './index';
 

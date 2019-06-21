@@ -3,7 +3,12 @@ import path from 'path';
 import YAML from 'yaml';
 import readdir from 'recursive-readdir';
 
-import { GatsbyI18nPluginOptions, LocalizationData, LocalizedResources, Translations } from './types';
+import {
+  GatsbyI18nPluginOptions,
+  LocalizationData,
+  LocalizedResources,
+  Translations,
+} from './types';
 
 function mustValidOptions(options: unknown): GatsbyI18nPluginOptions {
   const {
