@@ -12,6 +12,7 @@ export = {
   plugins: [
     ...getStack(),
     ...getHats({
+      passport: false,
       i18n: false,
       autotrack: true,
       googleAnalytics: !!GA_ID && { trackingId: GA_ID },
