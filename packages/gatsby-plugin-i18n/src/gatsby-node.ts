@@ -12,17 +12,11 @@ import {
 
 function mustValidOptions(options: unknown): GatsbyI18nPluginOptions {
   const {
-    languages,
     pagesPath = 'src/@pages',
     translationsPath = 'src/translations',
   } = options as GatsbyI18nPluginOptions
-
-  if (!languages || languages.length <= 0) {
-    throw new Error('Plugin options must be valid');
-  }
-
+  // Add future validations here
   return {
-    languages,
     pagesPath: path.resolve(process.cwd(), pagesPath),
     translationsPath: path.resolve(process.cwd(), translationsPath),
   };

@@ -1,7 +1,6 @@
 export interface GatsbyI18nPluginOptions {
   pagesPath: string;
   translationsPath: string;
-  languages: string[];
 }
 
 export interface LocalizationData {
