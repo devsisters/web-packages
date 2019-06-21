@@ -6,7 +6,7 @@ export declare class Token {
     token: string;
     clientId: string;
     header: {};
-    content: { exp: number, email: string };
+    content: { exp: number, email: string, name: string };
     signature: Buffer;
     signed: string;
     constructor(token: string, clientId?: string);
