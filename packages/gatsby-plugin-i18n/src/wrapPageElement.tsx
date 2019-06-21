@@ -15,11 +15,11 @@ const wrapPageElement: WrapPageElement = ({ element, props }) => {
   const { pageContext } = props as PageWrapperProps;
   const { locale, translations } = pageContext;
 
-  return (
+  return locale && translations ? (
     <i18nContext.Provider value={{ locale, translations }}>
       {element}
     </i18nContext.Provider>
-  );
+  ) : element;
 }
 
 export default wrapPageElement;
