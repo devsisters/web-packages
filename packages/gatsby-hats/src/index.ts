@@ -41,6 +41,14 @@ export default function getHats(config: HatsConfig): GatsbyPlugin[] {
       options: config.i18n,
     }));
   }
+  if (config.passport) {
+    plugins.push({
+      resolve: '@devsisters/passport',
+      options: {
+        clientId: config.passport.clientId,
+      },
+    });
+  }
   plugins.push(
     { resolve: 'gatsby-plugin-react-helmet' },
     { resolve: 'gatsby-plugin-sitemap' },
@@ -54,6 +62,16 @@ export const matomoTrackerUrls = {
 };
 
 interface HatsConfig {
+  /**
+   * passport 인증 여부입니다.
+   * 사내 서비스를 만들 때 사용해주세요.
+   */
+  passport?: false | {
+    /**
+     * keycloak client id를 적어주세요.
+    */
+    clientId: string;
+  };
   /**
    * 사이트 다국어 지원 여부입니다.
    * `true`를 넣으면 기본 설정을 사용합니다.
