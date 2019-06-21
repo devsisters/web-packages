@@ -1,3 +1,5 @@
+import { GatsbyI18nPluginOptions } from '@devsisters/gatsby-plugin-i18n/types';
+
 export default function getHats(config: HatsConfig): GatsbyPlugin[] {
   // 이 배열의 뒤쪽에 있을 수록 나중에 감싸집니다.
   // 나중에 감싸진다는 것은 렌더트리의 바깥에 있다는 뜻이기 때문에
@@ -57,18 +59,15 @@ interface HatsConfig {
   /**
    * 사이트 다국어 지원 여부입니다.
    * `true`를 넣으면 기본 설정을 사용합니다.
-   * 
+   *
    * 자세한 내용은 [문서](https://www.notion.so/devsisters/gatsby-plugin-i18n-8cab9382aa7f4dfa9e5d2015200d062a)를 참고하세요.
   */
-  i18n?: boolean | {
-    pagesPath: string;
-    translationsPath: string;
-  };
+  i18n?: boolean | Partial<GatsbyI18nPluginOptions>;
   /**
    * 자동 추적코드 삽입 여부입니다. (google analytics, matomo)
-   * 
+   *
    * 기본값은 `true`입니다. 끄려면 `false`를 넣으세요.
-   * 
+   *
    * 자동 추적코드에 대한 설명은 [여기](https://www.notion.so/devsisters/gatsby-plugin-autotrack-bced9c0bc9bb4ff58283b0006a182dd4)를 보세요.
    */
   autotrack?: boolean;
