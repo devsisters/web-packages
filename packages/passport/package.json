@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/passport",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "사내 서비스 로그인 및 권한 확인을 위한 라이브러리입니다.",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -14,12 +14,12 @@
     "access": "public"
   },
   "dependencies": {
-    "keycloak-connect": "4.4.0",
+    "keycloak-connect": "4.8.3",
     "keycloak-js": "4.4.0"
   },
   "devDependencies": {
-    "@types/node": "^10.9.4",
-    "@types/react": "^16.7.18",
-    "typescript": "^3.0.3"
+    "@types/node": "^10.14.9",
+    "@types/react": "^16.8.22",
+    "typescript": "^3.5.2"
   }
 }
