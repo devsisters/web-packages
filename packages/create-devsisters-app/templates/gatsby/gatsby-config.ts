@@ -1,6 +1,5 @@
 import { getEnv } from '@devsisters/dotenv';
-import getStack from '@devsisters/gatsby-stack';
-import getHats from '@devsisters/gatsby-hats';
+import getPreset from '@devsisters/gatsby-preset';
 
 const { PATH_PREFIX, PUBLIC_URL, SENTRY_DSN, GA_ID } = getEnv();
 
@@ -10,8 +9,7 @@ export = {
     siteUrl: PUBLIC_URL,
   },
   plugins: [
-    ...getStack(),
-    ...getHats({
+    ...getPreset({
       passport: false,
       i18n: false,
       autotrack: true,
