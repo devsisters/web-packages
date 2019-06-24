@@ -1,0 +1,33 @@
+{
+  "name": "@devsisters/gatsby-preset",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "Devsisters Corp.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "yarn build"
+  },
+  "dependencies": {
+    "@devsisters/dotenv": "^1.0.0",
+    "@devsisters/gatsby-plugin-autotrack": "^1.4.0",
+    "@devsisters/gatsby-plugin-google-analytics": "^1.0.1",
+    "@devsisters/gatsby-plugin-i18n": "^3.1.0",
+    "@devsisters/gatsby-plugin-matomo": "^1.1.0",
+    "@devsisters/gatsby-plugin-sentry": "^1.0.0",
+    "@devsisters/passport": "^1.2.0",
+    "gatsby-plugin-linaria": "^1.2.0",
+    "gatsby-plugin-module-resolver": "^1.0.3",
+    "gatsby-plugin-react-helmet": "^3.1.0",
+    "gatsby-plugin-sitemap": "^2.2.0",
+    "gatsby-plugin-typescript": "^2.1.0",
+    "gatsby-source-filesystem": "^2.1.0",
+    "linaria": "^1.3.1",
+    "react-helmet": "^6.0.0-beta"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.10",
+    "typescript": "^3.5.2"
+  }
+}
