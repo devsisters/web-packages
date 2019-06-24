@@ -1,3 +1,7 @@
+// Polyfill for target version of Node (v10)
+import 'core-js/stable/object/flat';
+import 'core-js/stable/object/fromEntries';
+
 import { GatsbyNode, Node } from 'gatsby';
 import path from 'path';
 import YAML from 'yaml';

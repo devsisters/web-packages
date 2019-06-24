@@ -32,6 +32,7 @@
     "@types/react": "^16.7.17",
     "@types/recursive-readdir": "^2.2.0",
     "@types/yaml": "^1.0.2",
+    "core-js": "^3.1.4",
     "gatsby": "^2.10.0",
     "typescript": "^3.5.2"
   }
