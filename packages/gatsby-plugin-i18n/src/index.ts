@@ -1,6 +1,4 @@
 import React from 'react';
-// @ts-ignore
-import raw from 'core-js-pure/features/string/raw';
 
 import { Translations } from './types';
 
@@ -32,5 +30,8 @@ export const useLocaleString = () => {
 export const useTexts = (locale?: string) => {
   const { translations, locale: contextLocaleString } = useI18n();
   const resource = translations[locale || contextLocaleString]
-  return (literals: TemplateStringsArray) => resource[raw(literals)];
+  return (template: TemplateStringsArray) => {
+    const key = String.raw(template);
+    return resource[key] || key;
+  };
 };

@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-plugin-i18n",
-  "version": "3.1.4",
+  "version": "3.1.5",
   "description": "gatsby plugin for i18n",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "core-js": "^3.1.4",
-    "core-js-pure": "^3.0.0-beta.6",
     "recursive-readdir": "^2.2.2",
     "yaml": "^1.6.0"
   },
