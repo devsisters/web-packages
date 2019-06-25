@@ -295,10 +295,10 @@
   resolved "https://registry.yarnpkg.com/@devsisters/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-1.0.1.tgz#505f54e4174dab5abf8b2f53870775b464038d34"
   integrity sha512-5ETBkHgZ982yOeDUngTaKEKzm7liNphg1Tn8PGBIQMjb+NEhZtyLFvqfNknxKQg+uLyd4sgDezHSTF2KVK4Lbg==
 
-"@devsisters/gatsby-plugin-i18n@^3.1.2":
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@devsisters/gatsby-plugin-i18n/-/gatsby-plugin-i18n-3.1.2.tgz#c9e7e2ce357e813145e1710a848643415d0ddee7"
-  integrity sha512-b/tbAJJ6VS/TNyHp3+1aAsaeCtIEJipNV1USVLFT8t2qCKxjL7p6mEgEqLGn7VPU8sClfPrNHF72XK0f4MuMJA==
+"@devsisters/gatsby-plugin-i18n@^3.1.3":
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/@devsisters/gatsby-plugin-i18n/-/gatsby-plugin-i18n-3.1.3.tgz#1c8d9648408dec70390c37032aef4c3b1342a9f1"
+  integrity sha512-VN0aK/jOPSlu21Y65Vwm3sw5gM1lNgk+A6i8/RuExJowLGKgxtxrRKbxkHj2beDHAA2TaMmS3WxqNG6dr675wg==
   dependencies:
     chokidar "^3.0.0"
     core-js-pure "^3.0.0-beta.6"
