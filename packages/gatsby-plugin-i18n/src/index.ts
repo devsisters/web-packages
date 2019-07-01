@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Translations } from './types';
 
+const raw = require('core-js-pure/stable/string/raw') as typeof String.raw;
+
 export interface I18nContext {
   locale: string;
   translations: Translations;
@@ -31,7 +33,7 @@ export const useTexts = (locale?: string) => {
   const { translations, locale: contextLocaleString } = useI18n();
   const resource = translations[locale || contextLocaleString]
   return (template: TemplateStringsArray) => {
-    const key = String.raw(template);
+    const key = raw(template);
     return resource[key] || key;
   };
 };
