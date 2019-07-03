@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-preset",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "Devsisters Corp.",
@@ -20,7 +20,7 @@
     "@devsisters/gatsby-plugin-matomo": "^1.1.0",
     "@devsisters/gatsby-plugin-sentry": "^1.0.0",
     "@devsisters/passport": "^1.2.0",
-    "gatsby-plugin-linaria": "^1.2.0",
+    "gatsby-plugin-linaria": "^1.2.1",
     "gatsby-plugin-module-resolver": "^1.0.3",
     "gatsby-plugin-react-helmet": "^3.1.0",
     "gatsby-plugin-sitemap": "^2.2.0",
