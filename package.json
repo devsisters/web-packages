@@ -2,6 +2,7 @@
   "name": "web-packages",
   "version": "0.0.0",
   "description": "",
+  "private": true,
   "scripts": {},
   "repository": {
     "type": "git",
@@ -12,8 +13,5 @@
   "bugs": {
     "url": "https://github.com/devsisters/web-packages/issues"
   },
-  "homepage": "https://github.com/devsisters/web-packages#readme",
-  "dependencies": {
-    "gatsby-plugin-module-resolver": "^1.0.3"
-  }
+  "homepage": "https://github.com/devsisters/web-packages#readme"
 }
