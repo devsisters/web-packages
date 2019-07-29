@@ -1,3 +1,6 @@
+import autoprefixer, { Options as AutoprefixerOptions } from 'autoprefixer';
+import postcssPresetEnv from 'postcss-preset-env';
+
 import { GatsbyI18nPluginOptions } from '@devsisters/gatsby-plugin-i18n/types';
 
 export default function getPreset(config: PresetConfig): GatsbyPlugin[] {
@@ -10,6 +13,15 @@ export default function getPreset(config: PresetConfig): GatsbyPlugin[] {
     'gatsby-plugin-linaria',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-postcss',
+      options: {
+        postCssPlugins: [
+          autoprefixer({ ...config.autoprefixer }),
+          postcssPresetEnv(),
+        ]
+      },
+    },
     {
       resolve: 'gatsby-plugin-module-resolver',
       options: {
@@ -128,6 +140,10 @@ interface PresetConfig {
      */
     dsn: string;
   };
+  /**
+   * PostCSS autoprefixer plugin 옵션을 지정하세요.
+   */
+  autoprefixer?: AutoprefixerOptions;
 }
 
 type GatsbyPlugin = string | {
