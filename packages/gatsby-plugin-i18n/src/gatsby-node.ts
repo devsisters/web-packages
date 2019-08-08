@@ -63,7 +63,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
 };
 
 export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql }, options) => {
-  const i18nOptions = mustValidOptions(options);
+  const { pagesPath } = mustValidOptions(options || {});
   const { createPage } = actions;
 
   const { data, errors } = await graphql(`
@@ -83,7 +83,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql 
     throw new Error('Failed to query for allLocalizations');
   }
 
-  const filePaths = await readdir(i18nOptions.pagesPath);
+  const filePaths = await readdir(pagesPath);
   const l10ns: LocalizationData[] = data.allLocalization.nodes
   const translations = Object.fromEntries(
     l10ns.map(({locale, translations}) => [
@@ -94,17 +94,17 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql 
     ])
   ) as Translations;
 
+  const PAGE_REGEXP = /(\.page\.(js|ts)x?$)/;
   l10ns
     .map(l10n => l10n.locale)
     .map(locale => filePaths.map(filePath => [locale, filePath]))
     .flat()
+    .filter(([, filePath]) => PAGE_REGEXP.test(filePath))
     .map(([locale, filePath]) => {
-      const [name] = path.basename(filePath).split('.');
+      const relativePath = path.relative(path.resolve(pagesPath), path.resolve(filePath));
 
-      let slug = `/${locale}`;
-      if (name !== 'index') {
-        slug += `/${name}`
-      }
+      let slug = `/${locale}/${relativePath.replace(PAGE_REGEXP, '')}`;
+      slug = slug.replace(/(\/index$)/, '');
 
       return {
         path: slug,

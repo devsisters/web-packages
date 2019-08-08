@@ -52,8 +52,8 @@ describe('GatsbyNode', () => {
       '/ko/product/cookie-game',
       '/en/product/fun-game',
       '/ko/product/fun-game',
-      '/en/product/products',
-      '/ko/product/products',
+      '/en/product/mobile-service',
+      '/ko/product/mobile-service',
       '/en/ir',
       '/ko/ir',
       '/en/ir/announcements',
@@ -113,10 +113,11 @@ describe('GatsbyNode', () => {
     // @ts-ignore
     readdir.mockResolvedValueOnce(pagePaths);
     // @ts-ignore
-    await createPages({ actions: { createPage: mockCreatePage }, graphql: mockGraphql })
+    await createPages({ actions: { createPage: mockCreatePage }, graphql: mockGraphql }, { pagesPath: '@pages' })
+
+    expect(mockCreatePage).toHaveBeenCalledTimes(expectedPages.length)
 
     const argsCalledWith = mockCreatePage.mock.calls.flat();
-
     expectedPages.forEach(path => {
       expect(argsCalledWith).toContainEqual(expect.objectContaining({
         path,
@@ -134,7 +135,6 @@ describe('GatsbyNode', () => {
           },
         }),
       }))
-    })
-    expect(mockCreatePage).toHaveBeenCalledTimes(expectedPages.length)
+    });
   });
 });
