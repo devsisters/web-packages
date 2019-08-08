@@ -45,9 +45,9 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
   const content = await loadNodeContent(node);
   const parsedContent = YAML.parse(content) as LocalizationData;
 
-  type LocalizationNode = Node & LocalizationData
+  type LocalizationNode = Node & LocalizationData;
   const localizationNode: LocalizationNode = {
-    locale: node.name!,
+    locale: node.name + '',
     translations: Object.entries(parsedContent).map(([key, value]) => ({ key, value })),
     id: createNodeId(`${node.id} >>> Localization`),
     parent: node.id,
