@@ -29,11 +29,16 @@ export const useLocaleString = () => {
   return useLocale();
 };
 
-export const useTexts = (locale?: string) => {
+interface UseTexts {
+  (locale?: string): typeof String.raw;
+}
+export const useTexts: UseTexts = locale => {
   const { translations, locale: contextLocaleString } = useI18n();
-  const resource = translations[locale || contextLocaleString]
-  return (template: TemplateStringsArray) => {
-    const key = raw(template);
-    return resource[key] || key;
+  const resource = translations[locale || contextLocaleString];
+  return (...args) => {
+    const key = raw(...args);
+    if (!resource) return key;
+    if (typeof resource[key] !== 'string') return key;
+    return resource[key];
   };
 };
