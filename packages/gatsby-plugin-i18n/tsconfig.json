@@ -13,14 +13,9 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "declaration": true,
-    "jsx": "react",
-    "types": [
-      "node"
-    ]
+    "jsx": "react"
   },
   "include": [
-    "src/**/*",
-    "types/**/*"
-  ],
-  "exclude": []
+    "src"
+  ]
 }
