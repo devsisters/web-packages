@@ -10,7 +10,6 @@ export default function getPreset(config: PresetConfig): GatsbyPlugin[] {
   const plugins: GatsbyPlugin[] = [
     '@devsisters/dotenv',
     'gatsby-plugin-typescript',
-    'gatsby-plugin-linaria',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     {
@@ -32,6 +31,9 @@ export default function getPreset(config: PresetConfig): GatsbyPlugin[] {
       },
     },
   ];
+  if (config.linaria !== false) {
+    plugins.push('gatsby-plugin-linaria');
+  }
   autotrack: if (config.autotrack !== false) {
     if (!config.googleAnalytics && !config.matomo) break autotrack;
     plugins.push({ resolve: '@devsisters/gatsby-plugin-autotrack' });
@@ -144,6 +146,11 @@ interface PresetConfig {
    * PostCSS autoprefixer plugin 옵션을 지정하세요.
    */
   autoprefixer?: AutoprefixerOptions;
+  /**
+   * Linaria를 비활성화 할 수 있습니다.
+   * @default true
+   */
+  linaria?: Boolean;
 }
 
 type GatsbyPlugin = string | {
