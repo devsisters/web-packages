@@ -22,7 +22,7 @@
     }
   },
   "dependencies": {
-    "@devsisters/gatsby-preset": "^1.1.0",
+    "@devsisters/gatsby-preset": "^1.1.1",
     "@types/node": "^10.14.9",
     "@types/react": "^16.8.22",
     "@types/react-dom": "^16.8.4",
