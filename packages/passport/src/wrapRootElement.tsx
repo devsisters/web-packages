@@ -6,11 +6,13 @@ import { tokenContext } from './react';
 
 interface PluginOptions {
     clientId: string;
+    url?: string;
+    realm?: string;
 }
 
 export default ({ element }: any, pluginOptions: PluginOptions) => {
     return (
-        <Login clientId={pluginOptions.clientId}>
+        <Login {...pluginOptions}>
             {element}
         </Login>
     );
@@ -18,12 +20,14 @@ export default ({ element }: any, pluginOptions: PluginOptions) => {
 
 interface LoginProps {
     clientId: string;
+    url?: string;
+    realm?: string;
     children?: React.ReactNode;
 }
-const Login: React.FC<LoginProps> = ({ clientId, children }) => {
+const Login: React.FC<LoginProps> = ({ children, ...loginConfig }) => {
     const [token, setToken] = useState<Token | null>(null);
     const loginAndRefreshLoop = async () => {
-        const loginResult = await login({ clientId });
+        const loginResult = await login(loginConfig);
         for await (const token of loginResult) {
             setToken(token);
         }

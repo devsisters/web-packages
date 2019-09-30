@@ -31,7 +31,7 @@ export default function getPreset(config: PresetConfig): GatsbyPlugin[] {
       },
     },
   ];
-  if (config.linaria !== false) {
+  if (config.linaria) {
     plugins.push('gatsby-plugin-linaria');
   }
   autotrack: if (config.autotrack !== false) {
@@ -80,9 +80,7 @@ export default function getPreset(config: PresetConfig): GatsbyPlugin[] {
   if (config.passport) {
     plugins.push({
       resolve: '@devsisters/passport',
-      options: {
-        clientId: config.passport.clientId,
-      },
+      options: config.passport,
     });
   }
   return plugins;
@@ -103,6 +101,14 @@ interface PresetConfig {
      * keycloak client id를 적어주세요.
     */
     clientId: string;
+    /**
+     * keycloak 서버 url을 적어주세요.
+    */
+    url?: string;
+    /**
+     * keycloak realm을 적어주세요.
+    */
+    realm?: string;
   };
   /**
    * 사이트 다국어 지원 여부입니다.
