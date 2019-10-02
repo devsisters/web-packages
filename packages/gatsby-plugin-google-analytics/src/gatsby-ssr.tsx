@@ -4,12 +4,14 @@ export const onRenderBody = ({ setHeadComponents }: any, pluginOptions: any) => 
   const { trackingId } = pluginOptions;
   if (!trackingId) return;
   setHeadComponents([
-    <script key="gtag" async src={`https://www.googletagmanager.com/gtag/js?id=${ trackingId }`}/>,
-    <script key="gtag-init" dangerouslySetInnerHTML={{ __html: `
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', ${ JSON.stringify(trackingId) }, { send_page_view: false });
-    ` }}/>,
+    <link rel="preconnect" href="https://www.google-analytics.com"/>,
+    <link rel="dns-prefetch" href="https://www.google-analytics.com"/>,
+    // See https://developers.google.com/analytics/devguides/collection/analyticsjs#alternative_async_tracking_snippet
+    <script dangerouslySetInnerHTML={{ __html: `
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', '${trackingId}', 'auto');
+      ga('send', 'pageview');
+    `}}/>,
+    <script async src='https://www.google-analytics.com/analytics.js'/>,
   ]);
 };
