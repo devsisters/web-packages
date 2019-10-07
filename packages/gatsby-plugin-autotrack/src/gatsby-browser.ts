@@ -6,20 +6,15 @@ import { onhashchange } from '.';
 
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
+    ga: (...args: any[]) => void;
     piwik: { trackEvent(category: string, action: string, name?: string, value?: string): void; };
   }
 }
 
 function trackEvent(category: string, action: string, name?: string) {
-  const { gtag, piwik } = window;
-  if (gtag) {
-    gtag('event', 'click', Object.assign({
-      event_category: category,
-      event_action: action,
-    }, name && {
-      event_label: name,
-    }));
+  const { ga, piwik } = window;
+  if (ga) {
+    ga('send', 'event', category, action, name);
   }
   if (piwik) {
     piwik.trackEvent(category, action, name);
