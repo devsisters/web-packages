@@ -104,7 +104,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql 
       const relativePath = path.relative(path.resolve(pagesPath), path.resolve(filePath));
 
       let slug = `/${locale}/${relativePath.replace(PAGE_REGEXP, '')}`;
-      slug = slug.replace(/(\/index$)/, '');
+      slug = slug.replace(/(\/index$)/, '') + '/';
 
       return {
         path: slug,
