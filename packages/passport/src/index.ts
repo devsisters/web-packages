@@ -36,10 +36,12 @@ const grantManagers: { [grantManagerHash: string]: any } = {};
 export interface VerifyConfig {
     headers: IncomingHttpHeaders;
     realm?: string;
+    url?: string;
 }
 export async function verify({
     headers,
     realm = defaultRealm,
+    url = authServerUrl,
 }: VerifyConfig): Promise<Token> {
     const { authorization } = headers;
     if (typeof authorization !== 'string') throw new Error();
@@ -54,7 +56,7 @@ export async function verify({
         const Config = nodeRequire('keycloak-connect/middleware/auth-utils/config');
         const GrantManager = nodeRequire('keycloak-connect/middleware/auth-utils/grant-manager');
         grantManagers[grantManagerHash] = new GrantManager(new Config({
-            authServerUrl,
+            authServerUrl: url,
             realm,
         }));
         return grantManagers[grantManagerHash];
