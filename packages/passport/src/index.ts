@@ -17,19 +17,67 @@ export declare class Token {
     hasPermission(resource: string, scope?: string): boolean;
 }
 
+export interface FakeMethodTable {
+    hasRole?: { [name: string]: boolean };
+    hasApplicationRole?: { [clientId: string]: { [roleName: string]: boolean } };
+    hasRealmRole?: { [roleName: string]: boolean };
+    hasPermission?: { [resource: string]: { [scope: string]: boolean } };
+}
+
+export class FakeToken extends _Token {
+    content!: Token['content'] & { fake: FakeMethodTable };
+    constructor(clientId?: string) { super('', clientId); }
+    isExpired() { return false; }
+    toJSON() {
+        const { token, clientId, content } = this;
+        return { token, clientId, content };
+    }
+    static prefix = 'FakeToken ';
+    static create(content: FakeToken['content'], clientId?: string) {
+        const fakeToken = new FakeToken(clientId);
+        fakeToken.content = content;
+        return fakeToken;
+    }
+    static fromAuthorization(authorization: string): FakeToken {
+        const jsonText = authorization.substring(FakeToken.prefix.length);
+        const { clientId, ...json } = JSON.parse(jsonText) || {};
+        const fakeToken = new FakeToken(clientId);
+        Object.assign(fakeToken, json);
+        const { fake } = fakeToken.content;
+        for (const methodName of FakeToken.fakeMethodNames) {
+            if (fake[methodName]) {
+                fakeToken[methodName] = FakeToken.getFakeMethod(fake[methodName]);
+            }
+        }
+        return fakeToken;
+    }
+    private static fakeMethodNames = [
+        'hasRole',
+        'hasApplicationRole',
+        'hasRealmRole',
+        'hasPermission',
+    ] as const;
+    private static getFakeMethod(table: any) {
+        return (...args: (string | undefined)[]) => {
+            while (typeof table === 'object') table = table[args.shift()!];
+            return !!table;
+        };
+    }
+}
+
 const authServerUrl = 'https://auth.devsisters.cloud/auth';
 const defaultRealm = 'devsisters';
 
 export interface GetAuthHeadersConfig {
-    token: Token;
+    token: Token | FakeToken;
 }
 export function getAuthHeaders(config: GetAuthHeadersConfig) {
-    const {
-        token,
-    } = config;
-    return {
-        'Authorization': `Bearer ${ token.token }`,
-    };
+    const { token } = config;
+    if (token instanceof FakeToken) {
+        return { 'Authorization': FakeToken.prefix + JSON.stringify(token) };
+    } else {
+        return { 'Authorization': `Bearer ${ token.token }` };
+    }
 }
 
 const grantManagers: { [grantManagerHash: string]: any } = {};
@@ -37,14 +85,19 @@ export interface VerifyConfig {
     headers: IncomingHttpHeaders;
     realm?: string;
     url?: string;
+    allowFakeToken?: boolean;
 }
 export async function verify({
     headers,
     realm = defaultRealm,
     url = authServerUrl,
+    allowFakeToken,
 }: VerifyConfig): Promise<Token> {
     const { authorization } = headers;
     if (typeof authorization !== 'string') throw new Error();
+    if (allowFakeToken && authorization.startsWith(FakeToken.prefix)) {
+        return FakeToken.fromAuthorization(authorization);
+    }
     if (!authorization.startsWith('Bearer ')) throw new Error();
     const token = new _Token(authorization.substring(7));
     // 인증에 실패하면 안쪽에서 에러를 던져줍니다.

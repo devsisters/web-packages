@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 
-import { login, Token } from '.';
-import { tokenContext } from './react';
+import { login, Token, FakeToken } from '.';
+import { tokenContext, setFakeTokenContext } from './react';
 
 interface PluginOptions {
     clientId: string;
@@ -26,6 +26,7 @@ interface LoginProps {
 }
 const Login: React.FC<LoginProps> = ({ children, ...loginConfig }) => {
     const [token, setToken] = useState<Token | null>(null);
+    const [fakeToken, setFakeToken] = useState<FakeToken | null>(null);
     const loginAndRefreshLoop = async () => {
         const loginResult = await login(loginConfig);
         for await (const token of loginResult) {
@@ -35,8 +36,10 @@ const Login: React.FC<LoginProps> = ({ children, ...loginConfig }) => {
     useEffect(() => void loginAndRefreshLoop(), []);
     if (!token) return null;
     return (
-        <tokenContext.Provider value={token}>
-            {children}
-        </tokenContext.Provider>
+        <setFakeTokenContext.Provider value={setFakeToken}>
+            <tokenContext.Provider value={fakeToken || token}>
+                {children}
+            </tokenContext.Provider>
+        </setFakeTokenContext.Provider>
     );
 };
