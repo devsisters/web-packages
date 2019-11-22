@@ -59,8 +59,9 @@ export class FakeToken extends _Token {
     ] as const;
     private static getFakeMethod(table: any) {
         return (...args: (string | undefined)[]) => {
-            while (typeof table === 'object') table = table[args.shift()!];
-            return !!table;
+            let curr = table;
+            while (typeof curr === 'object') curr = curr[args.shift()!];
+            return !!curr;
         };
     }
 }
