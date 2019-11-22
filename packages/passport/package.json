@@ -18,8 +18,8 @@
     "keycloak-js": "4.4.0"
   },
   "devDependencies": {
-    "@types/node": "^10.14.9",
-    "@types/react": "^16.8.22",
-    "typescript": "^3.5.2"
+    "@types/node": "^10.17.5",
+    "@types/react": "^16.9.11",
+    "typescript": "^3.7.2"
   }
 }
