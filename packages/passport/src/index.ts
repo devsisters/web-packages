@@ -1,5 +1,6 @@
 import { IncomingHttpHeaders } from 'http';
 import { KeycloakInstance } from 'keycloak-js';
+import { Base64 } from 'js-base64';
 
 const _Token: typeof Token = require('keycloak-connect/middleware/auth-utils/token');
 export declare class Token {
@@ -40,7 +41,7 @@ export class FakeToken extends _Token {
     }
     static fromAuthorization(authorization: string): FakeToken {
         const jsonText = authorization.substring(FakeToken.prefix.length);
-        const { clientId, ...json } = JSON.parse(jsonText) || {};
+        const { clientId, ...json } = JSON.parse(Base64.decode(jsonText)) || {};
         const fakeToken = new FakeToken(clientId);
         Object.assign(fakeToken, json);
         const { fake } = fakeToken.content;
@@ -75,7 +76,7 @@ export interface GetAuthHeadersConfig {
 export function getAuthHeaders(config: GetAuthHeadersConfig) {
     const { token } = config;
     if (token instanceof FakeToken) {
-        return { 'Authorization': FakeToken.prefix + JSON.stringify(token) };
+        return { 'Authorization': FakeToken.prefix + Base64.encode(JSON.stringify(token)) };
     } else {
         return { 'Authorization': `Bearer ${ token.token }` };
     }
