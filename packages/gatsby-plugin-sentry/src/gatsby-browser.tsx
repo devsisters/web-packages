@@ -1,16 +1,19 @@
-import * as React from 'react';
-import * as Sentry from '@sentry/browser';
+import React from 'react';
+import { GatsbyBrowser } from 'gatsby';
+import Sentry from '@sentry/browser';
 
-export const onClientEntry = (_: any, pluginOptions: any) => {
-  const { dsn } = pluginOptions;
+import { PluginOptions } from './types';
+
+export const onClientEntry: GatsbyBrowser['onClientEntry'] = (_, pluginOptions) => {
+  const { dsn } = pluginOptions as PluginOptions || {};
   if (!dsn) return;
   Sentry.init({ dsn });
 };
 
-export const wrapRootElement = ({ element }: any, pluginOptions: any) => (
-  pluginOptions.dsn ?
-  <SentryBoundary>{ element }</SentryBoundary> :
-  element
+export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({ element }, pluginOptions) => (
+  pluginOptions.dsn
+    ? <SentryBoundary>{element}</SentryBoundary>
+    : element
 );
 
 // https://docs.sentry.io/platforms/javascript/react/
