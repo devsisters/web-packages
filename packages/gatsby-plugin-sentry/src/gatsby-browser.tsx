@@ -17,7 +17,7 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({ element }, p
 );
 
 // https://docs.sentry.io/platforms/javascript/react/
-class SentryBoundary extends React.Component {
+class SentryBoundary extends React.PureComponent {
   componentDidCatch(error: any, errorInfo: any) {
     Sentry.withScope(scope => {
       Object.keys(errorInfo).forEach(key => {
