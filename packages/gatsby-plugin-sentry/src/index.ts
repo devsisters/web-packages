@@ -10,3 +10,5 @@ export function trackException(_target: any, _propertyKey: string, descriptor: P
     }
   };
 }
+
+export * from './types';
