@@ -5,9 +5,9 @@ import Sentry from '@sentry/browser';
 import { PluginOptions } from './types';
 
 export const onClientEntry: GatsbyBrowser['onClientEntry'] = (_, pluginOptions) => {
-  const { dsn } = pluginOptions as PluginOptions || {};
+  const { dsn, ...extraProps } = pluginOptions as PluginOptions || {};
   if (!dsn) return;
-  Sentry.init({ dsn });
+  Sentry.init({ dsn, ...extraProps });
 };
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({ element }, pluginOptions) => (
