@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-plugin-sentry",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A GatsbyJS plugin to install sentry error tracking",
   "main": "index.js",
   "typings": "index.d.ts",
