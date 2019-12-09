@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/browser';
+import Sentry from '@sentry/browser';
 
 export function trackException(_target: any, _propertyKey: string, descriptor: PropertyDescriptor) {
   const originalMethod = descriptor.value;
@@ -10,3 +10,5 @@ export function trackException(_target: any, _propertyKey: string, descriptor: P
     }
   };
 }
+
+export * from './types';
