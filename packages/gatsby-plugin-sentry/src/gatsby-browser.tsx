@@ -1,6 +1,6 @@
 import React from 'react';
 import { GatsbyBrowser } from 'gatsby';
-import Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/browser';
 
 import { PluginOptions } from './types';
 
