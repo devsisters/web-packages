@@ -2,6 +2,7 @@ import autoprefixer, { Options as AutoprefixerOptions } from 'autoprefixer';
 import postcssPresetEnv from 'postcss-preset-env';
 
 import { GatsbyI18nPluginOptions } from '@devsisters/gatsby-plugin-i18n/types';
+import { PluginOptions as SentryPluginOptions } from '@devsisters/gatsby-plugin-sentry/types';
 
 export default function getPreset(config: PresetConfig): GatsbyPlugin[] {
   // 이 배열의 뒤쪽에 있을 수록 나중에 감싸집니다.
@@ -59,7 +60,7 @@ export default function getPreset(config: PresetConfig): GatsbyPlugin[] {
     plugins.push({
       resolve: '@devsisters/gatsby-plugin-sentry',
       options: {
-        dsn: config.sentry.dsn,
+        ...config.sentry,
       },
     });
   }
@@ -141,13 +142,13 @@ interface PresetConfig {
      */
     siteId: string;
   };
-  sentry?: false | {
-    /**
-     * `https://abcdef0123456789abcdef0123456789@sentry.io/1234567`
-     * 요런 모양으로 생긴 url을 적어주세요.
-     */
-    dsn: string;
-  };
+
+  /**
+   * `https://abcdef0123456789abcdef0123456789@sentry.io/1234567`
+   * dsn에 요런 모양으로 생긴 url을 적어주세요.
+   */
+  sentry?: false | SentryPluginOptions;
+
   /**
    * PostCSS autoprefixer plugin 옵션을 지정하세요.
    */
