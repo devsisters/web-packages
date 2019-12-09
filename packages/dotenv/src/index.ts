@@ -74,7 +74,7 @@ export interface GetEnvOptions {
 
 /**
  * 사용하고자 하는 환경변수들을 반환합니다.
- * 파일을 읽는 것 외의 부수효과를 발생시키지 않습니다.
+ * 파일과 환경변수를 읽는 것 외의 부수효과를 발생시키지 않습니다.
  * @param options
  */
 export function getEnv(options: GetEnvOptions = {}): Env {
@@ -100,7 +100,9 @@ export function getEnv(options: GetEnvOptions = {}): Env {
       `.env.${profile}`, // 3rd
       '.env', // last
     ].filter(x => x) as string[];
-    const env = Object.assign({}, options.env || process.env) as Env;
+    const env = Object.assign({
+      DOTENV: process.env.DOTENV,
+    }, options.env || process.env) as Env;
     const result: Env = {};
     (env as any).__proto__ = result;
     filenames.reduceRight((result, envFilename) => {
