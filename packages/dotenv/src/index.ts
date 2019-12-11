@@ -100,10 +100,8 @@ export function getEnv(options: GetEnvOptions = {}): Env {
       `.env.${profile}`, // 3rd
       '.env', // last
     ].filter(x => x) as string[];
-    const env = Object.assign({
-      DOTENV: process.env.DOTENV,
-    }, options.env || process.env) as Env;
-    const result: Env = {};
+    const env = Object.assign({}, options.env || process.env) as Env;
+    const result: Env = { DOTENV: process.env.DOTENV! };
     (env as any).__proto__ = result;
     filenames.reduceRight((result, envFilename) => {
       if (!envDir.includes(envFilename)) return result;
