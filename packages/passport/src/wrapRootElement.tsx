@@ -35,21 +35,27 @@ const Login: React.FC<LoginProps> = ({ children, ...loginConfig }) => {
             setToken(token);
         }
     };
-    const dispatchFakeToken = (newFakeToken: FakeToken | null) => {
-        sessionStorage.setItem(FAKE_SESSION_KEY, JSON.stringify(setToken));
-        setFakeToken(newFakeToken);
-    };
+
     useEffect(() => {
-        const fakeSessionToken = sessionStorage.getItem(FAKE_SESSION_KEY);
-        if (fakeSessionToken) {
-            setFakeToken(JSON.parse(fakeSessionToken));
+        if (fakeToken) {
+            sessionStorage.setItem(FAKE_SESSION_KEY, JSON.stringify(fakeToken));
+        }
+    }, [fakeToken]);
+
+    useEffect(() => {
+        const fakeSessionPayload = sessionStorage.getItem(FAKE_SESSION_KEY);
+        if (fakeSessionPayload) {
+            const { content, clientId } = JSON.parse(fakeSessionPayload);
+            setFakeToken(FakeToken.create(content, clientId));
         } else {
             loginAndRefreshLoop();
         }
     }, []);
+
     if (!fakeToken && !token) return null;
+
     return (
-        <setFakeTokenContext.Provider value={dispatchFakeToken}>
+        <setFakeTokenContext.Provider value={setFakeToken}>
             <tokenContext.Provider value={(fakeToken || token)!}>
                 {children}
             </tokenContext.Provider>
