@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { login, Token, FakeToken } from '.';
 import { tokenContext, setFakeTokenContext } from './react';
 
+const FAKE_SESSION_KEY = '@devsisters/passport:fake-token';
+
 interface PluginOptions {
     clientId: string;
     url?: string;
@@ -33,11 +35,22 @@ const Login: React.FC<LoginProps> = ({ children, ...loginConfig }) => {
             setToken(token);
         }
     };
-    useEffect(() => void loginAndRefreshLoop(), []);
-    if (!token) return null;
+    const dispatchFakeToken = (newFakeToken: FakeToken | null) => {
+        sessionStorage.setItem(FAKE_SESSION_KEY, JSON.stringify(setToken));
+        setFakeToken(newFakeToken);
+    };
+    useEffect(() => {
+        const fakeSessionToken = sessionStorage.getItem(FAKE_SESSION_KEY);
+        if (fakeSessionToken) {
+            setFakeToken(JSON.parse(fakeSessionToken));
+        } else {
+            loginAndRefreshLoop();
+        }
+    }, []);
+    if (!fakeToken && !token) return null;
     return (
-        <setFakeTokenContext.Provider value={setFakeToken}>
-            <tokenContext.Provider value={fakeToken || token}>
+        <setFakeTokenContext.Provider value={dispatchFakeToken}>
+            <tokenContext.Provider value={(fakeToken || token)!}>
                 {children}
             </tokenContext.Provider>
         </setFakeTokenContext.Provider>
