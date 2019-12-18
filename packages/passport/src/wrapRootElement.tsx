@@ -4,8 +4,6 @@ import { useState, useEffect } from 'react';
 import { login, Token, FakeToken } from '.';
 import { tokenContext, setFakeTokenContext } from './react';
 
-const FAKE_SESSION_KEY = '@devsisters/passport:fake-token';
-
 interface PluginOptions {
     clientId: string;
     url?: string;
@@ -14,51 +12,55 @@ interface PluginOptions {
 
 export default ({ element }: any, pluginOptions: PluginOptions) => {
     return (
-        <Login {...pluginOptions}>
+        <Login pluginOptions={pluginOptions}>
             {element}
         </Login>
     );
 };
 
 interface LoginProps {
-    clientId: string;
-    url?: string;
-    realm?: string;
     children?: React.ReactNode;
+    pluginOptions: PluginOptions;
 }
-const Login: React.FC<LoginProps> = ({ children, ...loginConfig }) => {
-    const [token, setToken] = useState<Token | null>(null);
-    const [fakeToken, setFakeToken] = useState<FakeToken | null>(null);
-    const loginAndRefreshLoop = async () => {
-        const loginResult = await login(loginConfig);
-        for await (const token of loginResult) {
-            setToken(token);
-        }
-    };
-
-    useEffect(() => {
-        if (fakeToken) {
-            sessionStorage.setItem(FAKE_SESSION_KEY, JSON.stringify(fakeToken));
-        }
-    }, [fakeToken]);
-
-    useEffect(() => {
-        const fakeSessionPayload = sessionStorage.getItem(FAKE_SESSION_KEY);
-        if (fakeSessionPayload) {
-            const { content, clientId } = JSON.parse(fakeSessionPayload);
-            setFakeToken(FakeToken.create(content, clientId));
-        } else {
-            loginAndRefreshLoop();
-        }
-    }, []);
-
-    if (!fakeToken && !token) return null;
-
+const Login: React.FC<LoginProps> = ({ children, pluginOptions }) => {
+    const [fakeToken, setFakeToken] = useFakeToken();
+    const realToken = useLogin(pluginOptions);
+    const token = fakeToken || realToken;
+    if (!token) return null;
     return (
         <setFakeTokenContext.Provider value={setFakeToken}>
-            <tokenContext.Provider value={(fakeToken || token)!}>
+            <tokenContext.Provider value={token}>
                 {children}
             </tokenContext.Provider>
         </setFakeTokenContext.Provider>
     );
 };
+
+function useLogin(pluginOptions: PluginOptions) {
+    const [token, setToken] = useState<Token | null>(null);
+    const loginAndRefreshLoop = async () => {
+        const loginResult = await login(pluginOptions);
+        for await (const token of loginResult) setToken(token);
+    };
+    useEffect(() => {
+        if (sessionStorage.getItem('@devsisters/passport:skip-login') === 'true') return;
+        loginAndRefreshLoop();
+    }, []);
+    return token;
+}
+
+function useFakeToken() {
+    const key = '@devsisters/passport:fake-token' as const;
+    const [fakeToken, setFakeToken] = useState<FakeToken | null>(null);
+    useEffect(() => {
+        const payload = sessionStorage.getItem(key);
+        if (!payload) return;
+        const { content, clientId } = JSON.parse(payload);
+        setFakeToken(FakeToken.create(content, clientId));
+    }, []);
+    useEffect(() => {
+        if (!fakeToken) return sessionStorage.removeItem(key);
+        sessionStorage.setItem(key, JSON.stringify(fakeToken));
+    }, [fakeToken]);
+    return [fakeToken, setFakeToken] as const;
+}
