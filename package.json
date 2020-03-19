@@ -3,15 +3,17 @@
   "version": "0.0.0",
   "description": "",
   "private": true,
-  "scripts": {},
+  "author": "Devsisters Corp.",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/devsisters/web-packages#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devsisters/web-packages.git"
   },
-  "author": "Devsisters Corp.",
-  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/devsisters/web-packages/issues"
   },
-  "homepage": "https://github.com/devsisters/web-packages#readme"
+  "workspaces": [
+    "packages/*"
+  ]
 }

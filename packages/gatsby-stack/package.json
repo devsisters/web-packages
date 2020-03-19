@@ -6,7 +6,7 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepublishOnly": "npm install && npm run build"
+    "prepublishOnly": "yarn && yarn build"
   },
   "author": "Devsisters Corp.",
   "license": "UNLICENSED",
