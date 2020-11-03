@@ -5,7 +5,8 @@
     "moduleResolution": "Node",
     "strict": true,
     "composite": true,
-    "incremental": true
+    "incremental": true,
+    "jsx": "preserve"
   },
   "include": [
     "src",
