@@ -1,0 +1,30 @@
+{
+  "name": "@devsisters/eslint-plugin",
+  "version": "0.0.1",
+  "description": "Devisisters' pre-configured ESLint settings.",
+  "author": "Devsisters Corp.",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devsisters/web-packages.git",
+    "directory": "packages/eslint-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/devsisters/web-packages/issues"
+  },
+  "keywords": [
+    "eslint",
+    "plugin",
+    "devsisters"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "index.js",
+    "configs"
+  ],
+  "peerDependencies": {},
+  "peerDependenciesMeta": {},
+  "dependencies": {}
+}
