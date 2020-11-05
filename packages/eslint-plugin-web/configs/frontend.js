@@ -26,10 +26,6 @@ module.exports = {
     'import/no-amd': 'error',
     'import/no-deprecated': 'error',
     'import/no-mutable-exports': 'error',
-    'import/no-unused-modules': [
-      'error',
-      { missingExports: true, unusedExports: true },
-    ],
     'import/no-nodejs-modules': 'error',
     'import/no-duplicates': 'error',
     'import/first': 'error',
