@@ -1,0 +1,46 @@
+{
+  "name": "@devsisters/gatsby-theme-site-navigation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Hyeseong Kim",
+    "email": "hyeseong.kim@devsisters.com"
+  },
+  "maintainers": [
+    {
+      "name": "Web Service Cell @ Devsisters Corp",
+      "email": "web@devsisters.com"
+    }
+  ],
+  "scripts": {
+    "build": "babel src -d . --extensions .ts",
+    "prepack": "yarn build"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "gatsby-config.js",
+    "src",
+    "typings"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.6.0",
+    "react": "^17.0.1 || ^16.8.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-typescript": "^7.12.1",
+    "babel-preset-gatsby-package": "^0.5.3",
+    "gatsby": "^2.25.3",
+    "typescript": "^4.0.5"
+  },
+  "dependencies": {
+    "gatsby-source-prismic": "^3.2.1"
+  }
+}

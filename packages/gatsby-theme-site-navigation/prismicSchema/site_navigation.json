@@ -1,0 +1,88 @@
+{
+  "Main" : {
+    "_meta" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label" : "설명",
+        "placeholder" : "용도를 설명해주세요..."
+      }
+    },
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "uid"
+      }
+    },
+    "terms" : {
+      "type" : "Link",
+      "config" : {
+        "label" : "terms",
+        "placeholder" : "이용약관 바로가기 링크"
+      }
+    },
+    "privacy" : {
+      "type" : "Link",
+      "config" : {
+        "label" : "privacy",
+        "placeholder" : "개인정보 보호정책 바로가기 링크"
+      }
+    },
+    "cs" : {
+      "type" : "Link",
+      "config" : {
+        "label" : "cs",
+        "placeholder" : "CS 바로가기 링크"
+      }
+    },
+    "items" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "label" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "표시명"
+            }
+          },
+          "link" : {
+            "type" : "Link",
+            "config" : {
+              "label" : "링크 주소",
+              "placeholder" : "전체 URL(href)..."
+            }
+          }
+        },
+        "label" : "메인 네비게이션 항목"
+      }
+    },
+    "socials" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "label" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "label"
+            }
+          },
+          "symbol" : {
+            "type" : "Select",
+            "config" : {
+              "options" : [ "twitter", "facebook", "youtube", "bilibili", "naver_cafe", "instagram", "weibo", "reddit", "discord", "forum" ],
+              "label" : "symbol"
+            }
+          },
+          "link" : {
+            "type" : "Link",
+            "config" : {
+              "label" : "link",
+              "placeholder" : "전체 URL(href)..."
+            }
+          }
+        },
+        "label" : "SNS 항목"
+      }
+    }
+  }
+}
