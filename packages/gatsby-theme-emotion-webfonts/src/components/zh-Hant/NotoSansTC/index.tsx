@@ -4,7 +4,7 @@ import { Global, css } from '@emotion/core';
 const NotoSansTC: React.FC = () => {
   return (
     <Global styles={css`
-      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:400,700&display=swap&subset=chinese-tranditional');
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap&subset=chinese-tranditional');
     `} />
   );
 };
