@@ -1,10 +1,10 @@
 import type { GatsbyNode as _GatsbyNode } from 'gatsby';
 
-import { mustValidOptions, normalizeLanguage } from './lib';
+import { normalizeLanguage, normalizeSocialServiceName } from './lib';
 
 type NormalizeGatsbyNodeAPI<T extends keyof _GatsbyNode> = _GatsbyNode[T] extends infer U
-  ? U extends ((...args: infer Params) => any)
-  ? ((...args: Params) => (void | Promise<void>))
+  ? U extends ((...args: infer Params) => infer Return)
+  ? ((...args: Params) => Return)
   : never
   : never;
 
@@ -13,6 +13,12 @@ type GatsbyNode = {
 }
 
 const gql = String.raw;
+
+export const pluginOptionsSchema: GatsbyNode['pluginOptionsSchema'] = ({ Joi }) => {
+  return Joi.object({
+    navigationId: Joi.string().required(),
+  }).unknown(true);
+};
 
 export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({
   actions,
@@ -49,13 +55,19 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
   `);
 };
 
+type ValidPluginOptions = {
+  navigationId: string,
+  [key: string]: unknown,
+};
+
 export const onCreateNode: GatsbyNode['onCreateNode'] = ({
   node,
   actions,
   createNodeId,
   createContentDigest,
 }, pluginOptions) => {
-  const options = mustValidOptions(pluginOptions);
+  // Validated by Gatsby API
+  const options = pluginOptions as unknown as ValidPluginOptions;
 
   if (node.internal.type !== 'PrismicSiteNavigation') {
     return;
@@ -73,7 +85,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
       url: item.link.url,
     })),
     socials: (node.data as $FIXME).socials.map((social: $FIXME) => ({
-      service: social.symbol.toUpperCase(),
+      service: normalizeSocialServiceName(social.symbol),
       entry: {
         label: social.label,
         url: social.link.url,
