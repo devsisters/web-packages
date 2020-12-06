@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-plugin-sentry",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "A GatsbyJS plugin to install sentry error tracking",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -25,8 +25,7 @@
   },
   "dependencies": {
     "@sentry/browser": "^5.28.0",
-    "@sentry/react": "^5.28.0",
-    "@sentry/tracing": "^5.28.0"
+    "@sentry/react": "^5.28.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.8",
