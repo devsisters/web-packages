@@ -41,6 +41,8 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
     terms: { url: string },
     privacy: { url: string },
     cs: { url: string },
+    socialtype: string,
+    company: { address: string, tel: string, fax: string },
     items: Array<{ label: string, link: Link}>,
     socials: Array<{ symbol: string, label: string, link: Link}>,
   };
@@ -49,6 +51,8 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
     terms: (node.data as NodeData).terms.url,
     privacy: (node.data as NodeData).privacy.url,
     cs: (node.data as NodeData).cs.url,
+    socialType: (node.data as NodeData).socialtype,
+    company: (node.data as NodeData).company,
     entries: (node.data as NodeData).items.map((item) => ({
       label: item.label,
       url: item.link.url,
@@ -97,9 +101,21 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       NAVER_CAFE
     }
 
+    enum MainSocialType {
+      TIWTTER
+      FACEBOOK
+      NAVER_CAFE
+    }
+
     type SiteNavigationSocial {
       service: SiteNavigationSocialService!
       entry: SiteNavigationEntry!
+    }
+
+    type CompanyInfo {
+      address: String!
+      tel: String!
+      fax: String!
     }
 
     type SiteNavigation implements Node @dontInfer {
@@ -107,6 +123,8 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       terms: String!
       privacy: String!
       cs: String!
+      socialType: MainSocialType!
+      company: CompanyInfo!
       entries: [SiteNavigationEntry!]!
       socials: [SiteNavigationSocial!]!
     }
