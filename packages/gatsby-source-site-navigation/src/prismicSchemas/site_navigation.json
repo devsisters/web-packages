@@ -43,32 +43,25 @@
         "placeholder" : "cs 바로가기 링크"
       }
     },
-    "company" : {
-      "type" : "Group",
+    "address" : {
+      "type" : "Text",
       "config" : {
-        "fields" : {
-          "address" : {
-            "type" : "Text",
-            "config" : {
-              "label" : "address",
-              "placeholder" : "주소"
-            }
-          },
-          "tel" : {
-            "type" : "Text",
-            "config" : {
-              "label" : "tel",
-              "placeholder" : "전화번호"
-            }
-          },
-          "fax" : {
-            "type" : "Text",
-            "config" : {
-              "label" : "fax",
-              "placeholder" : "팩스"
-            }
-          }
-        }
+        "label" : "address",
+        "placeholder" : "주소"
+      }
+    },
+    "tel" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "tel",
+        "placeholder" : "전화번호"
+      }
+    },
+    "fax" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "fax",
+        "placeholder" : "팩스"
       }
     },
     "items" : {
