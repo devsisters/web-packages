@@ -46,9 +46,9 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
   };
   const body = {
     language: normalizeLanguage(node.lang as string),
-    terms: (node.data as NodeData).terms.link,
-    privacy: (node.data as NodeData).privacy.link,
-    cs: (node.data as NodeData).cs.link,
+    terms: (node.data as NodeData).terms.link.url,
+    privacy: (node.data as NodeData).privacy.link.url,
+    cs: (node.data as NodeData).cs.link.url,
     entries: (node.data as NodeData).items.map((item) => ({
       label: item.label,
       url: item.link.url,
