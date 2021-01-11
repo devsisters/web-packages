@@ -42,7 +42,9 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
     privacy: { url: string },
     cs: { url: string },
     socialtype: string,
-    company: { address: string, tel: string, fax: string },
+    address: string,
+    tel: string,
+    fax: string,
     items: Array<{ label: string, link: Link}>,
     socials: Array<{ symbol: string, label: string, link: Link}>,
   };
@@ -52,7 +54,11 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
     privacy: (node.data as NodeData).privacy.url,
     cs: (node.data as NodeData).cs.url,
     socialType: (node.data as NodeData).socialtype,
-    company: (node.data as NodeData).company,
+    company: {
+      address: (node.data as NodeData).address,
+      tel: (node.data as NodeData).tel,
+      fax: (node.data as NodeData).fax,
+    },
     entries: (node.data as NodeData).items.map((item) => ({
       label: item.label,
       url: item.link.url,
