@@ -38,17 +38,17 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
     url: string,
   };
   type NodeData = {
-    terms: { link: Link },
-    privacy: { link: Link },
-    cs: { link: Link },
+    terms: { url: string },
+    privacy: { url: string },
+    cs: { url: string },
     items: Array<{ label: string, link: Link}>,
     socials: Array<{ symbol: string, label: string, link: Link}>,
   };
   const body = {
     language: normalizeLanguage(node.lang as string),
-    terms: (node.data as NodeData).terms.link.url,
-    privacy: (node.data as NodeData).privacy.link.url,
-    cs: (node.data as NodeData).cs.link.url,
+    terms: (node.data as NodeData).terms.url,
+    privacy: (node.data as NodeData).privacy.url,
+    cs: (node.data as NodeData).cs.url,
     entries: (node.data as NodeData).items.map((item) => ({
       label: item.label,
       url: item.link.url,
