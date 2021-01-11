@@ -34,14 +34,26 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
     return;
   }
 
-  type $FIXME = any;
+  type Link = {
+    url: string,
+  };
+  type NodeData = {
+    terms: { link: Link },
+    privacy: { link: Link },
+    cs: { link: Link },
+    items: Array<{ label: string, link: Link}>,
+    socials: Array<{ symbol: string, label: string, link: Link}>,
+  };
   const body = {
     language: normalizeLanguage(node.lang as string),
-    entries: (node.data as $FIXME).items.map((item: $FIXME) => ({
+    terms: (node.data as NodeData).terms.link,
+    privacy: (node.data as NodeData).privacy.link,
+    cs: (node.data as NodeData).cs.link,
+    entries: (node.data as NodeData).items.map((item) => ({
       label: item.label,
       url: item.link.url,
     })),
-    socials: (node.data as $FIXME).socials.map((social: $FIXME) => ({
+    socials: (node.data as NodeData).socials.map((social) => ({
       service: normalizeSocialServiceName(social.symbol),
       entry: {
         label: social.label,
@@ -92,6 +104,9 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
 
     type SiteNavigation implements Node @dontInfer {
       language: String!
+      terms: String!
+      privacy: String!
+      cs: String!
       entries: [SiteNavigationEntry!]!
       socials: [SiteNavigationSocial!]!
     }
