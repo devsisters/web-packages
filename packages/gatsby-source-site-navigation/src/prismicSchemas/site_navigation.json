@@ -14,6 +14,14 @@
         "label" : "uid"
       }
     },
+    "socialtype" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "TWITTER", "FACEBOOK", "NAVER_CAFE" ],
+        "label" : "socialtype",
+        "placeholder" : "사이트 네비게이션 버튼 종류"
+      }
+    },
     "terms" : {
       "type" : "Link",
       "config" : {
@@ -32,7 +40,35 @@
       "type" : "Link",
       "config" : {
         "label" : "cs",
-        "placeholder" : "CS 바로가기 링크"
+        "placeholder" : "cs 바로가기 링크"
+      }
+    },
+    "company" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "address" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "address",
+              "placeholder" : "주소"
+            }
+          },
+          "tel" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "tel",
+              "placeholder" : "전화번호"
+            }
+          },
+          "fax" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "fax",
+              "placeholder" : "팩스"
+            }
+          }
+        }
       }
     },
     "items" : {
