@@ -108,7 +108,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
     }
 
     enum MainSocialType {
-      TIWTTER
+      TWITTER
       FACEBOOK
       NAVER_CAFE
     }
