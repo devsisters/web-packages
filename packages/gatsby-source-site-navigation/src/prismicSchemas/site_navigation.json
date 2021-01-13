@@ -14,6 +14,13 @@
         "label" : "uid"
       }
     },
+    "trailerLink" : {
+      "type" : "Link",
+      "config" : {
+        "label" : "trailerLink",
+        "placeholder" : "트레일러 유튜브 링크"
+      }
+    },
     "socialtype" : {
       "type" : "Select",
       "config" : {

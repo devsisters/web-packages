@@ -38,6 +38,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
     url: string,
   };
   type NodeData = {
+    trailerLink: { url: string },
     terms: { url: string },
     privacy: { url: string },
     cs: { url: string },
@@ -50,6 +51,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
   };
   const body = {
     language: normalizeLanguage(node.lang as string),
+    trailerLink: (node.data as NodeData).trailerLink.url,
     terms: (node.data as NodeData).terms.url,
     privacy: (node.data as NodeData).privacy.url,
     cs: (node.data as NodeData).cs.url,
@@ -126,6 +128,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
 
     type SiteNavigation implements Node @dontInfer {
       language: String!
+      trailerLink: String!
       terms: String!
       privacy: String!
       cs: String!
