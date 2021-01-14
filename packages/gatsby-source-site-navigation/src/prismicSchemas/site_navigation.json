@@ -14,7 +14,7 @@
         "label" : "uid"
       }
     },
-    "traileId" : {
+    "trailerId" : {
       "type" : "Text",
       "config" : {
         "label" : "trailerId",
