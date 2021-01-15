@@ -48,6 +48,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
     fax: string,
     items: Array<{ label: string, link: Link}>,
     socials: Array<{ symbol: string, label: string, link: Link}>,
+    appInformation: { googleAppId: string, appleAppId: string, onestoreAppId: string, onelink: Link },
   };
   const body = {
     language: normalizeLanguage(node.lang as string),
@@ -72,6 +73,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
         url: social.link.url,
       },
     })),
+    appInformation: (node.data as NodeData).appInformation,
   };
 
   actions.createNode({
@@ -126,6 +128,13 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       fax: String!
     }
 
+    type AppInformation {
+      googleAppId: String
+      appleAppId: String
+      onestoreAppId: String
+      onelink: Link
+    }
+
     type SiteNavigation implements Node @dontInfer {
       language: String!
       trailerId: String!
@@ -136,6 +145,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       company: CompanyInfo!
       entries: [SiteNavigationEntry!]!
       socials: [SiteNavigationSocial!]!
+      appInformation: AppInformation!
     }
   `);
 };
