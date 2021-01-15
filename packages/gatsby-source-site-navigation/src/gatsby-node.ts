@@ -73,10 +73,13 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
         url: social.link.url,
       },
     })),
-    appInformation:{
+    appInformation:
+    (node.data as NodeData).appInformation.onelink ?
+    {
       ...(node.data as NodeData).appInformation,
       onelink: (node.data as NodeData).appInformation.onelink.url,
-    },
+    }
+    : (node.data as NodeData).appInformation,
   };
 
   actions.createNode({
