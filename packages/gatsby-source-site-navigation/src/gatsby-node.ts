@@ -48,7 +48,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
     fax: string,
     items: Array<{ label: string, link: Link}>,
     socials: Array<{ symbol: string, label: string, link: Link}>,
-    appInformation: { googleAppId?: string, appleAppId?: string, onestoreAppId?: string, onelink: Link },
+    appInformation: { googleAppId: string, appleAppId: string, onestoreAppId: string, onelink: Link },
   };
   const body = {
     language: normalizeLanguage(node.lang as string),
@@ -73,13 +73,12 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
         url: social.link.url,
       },
     })),
-    appInformation:
-    (node.data as NodeData).appInformation.onelink ?
-    {
-      ...(node.data as NodeData).appInformation,
+    appInformation: {
+      googleAppId: (node.data as NodeData).appInformation.googleAppId,
+      appleAppId: (node.data as NodeData).appInformation.appleAppId,
+      onestoreAppId: (node.data as NodeData).appInformation.onestoreAppId,
       onelink: (node.data as NodeData).appInformation.onelink.url,
-    }
-    : (node.data as NodeData).appInformation,
+    },
   };
 
   actions.createNode({
@@ -135,9 +134,9 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
     }
 
     type AppInformation {
-      googleAppId: String
-      appleAppId: String
-      onestoreAppId: String
+      googleAppId: String!
+      appleAppId: String!
+      onestoreAppId: String!
       onelink: String!
     }
 
