@@ -73,7 +73,10 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
         url: social.link.url,
       },
     })),
-    appInformation: (node.data as NodeData).appInformation,
+    appInformation: {
+      ...(node.data as NodeData).appInformation,
+      onelink: (node.data as NodeData).appInformation.onelink.url,
+    },
   };
 
   actions.createNode({
@@ -132,7 +135,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       googleAppId: String
       appleAppId: String
       onestoreAppId: String
-      onelink: Link
+      onelink: String
     }
 
     type SiteNavigation implements Node @dontInfer {
