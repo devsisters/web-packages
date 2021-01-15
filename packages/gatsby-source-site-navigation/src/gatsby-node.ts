@@ -48,7 +48,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
     fax: string,
     items: Array<{ label: string, link: Link}>,
     socials: Array<{ symbol: string, label: string, link: Link}>,
-    appInformation: { googleAppId: string, appleAppId: string, onestoreAppId: string, onelink: Link },
+    appInformation: { googleAppId?: string, appleAppId?: string, onestoreAppId?: string, onelink: Link },
   };
   const body = {
     language: normalizeLanguage(node.lang as string),
