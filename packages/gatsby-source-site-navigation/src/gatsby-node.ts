@@ -133,10 +133,10 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       fax: String!
     }
 
-    type AppInformation {
-      googleAppId: String!
-      appleAppId: String!
-      onestoreAppId: String!
+    type AppInformationType {
+      googleAppId: String
+      appleAppId: String
+      onestoreAppId: String
       onelink: String!
     }
 
@@ -150,7 +150,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       company: CompanyInfo!
       entries: [SiteNavigationEntry!]!
       socials: [SiteNavigationSocial!]!
-      appInformation: AppInformation!
+      appInformation: AppInformationType!
     }
   `);
 };
