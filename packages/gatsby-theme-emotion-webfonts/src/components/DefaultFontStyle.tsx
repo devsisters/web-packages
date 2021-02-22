@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Global } from '@emotion/core';
+import { Global } from '@emotion/react';
 
 const DefaultFontStyle: React.FC = () => {
   return (

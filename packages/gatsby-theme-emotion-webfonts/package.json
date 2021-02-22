@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-theme-emotion-webfonts",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "description": "",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -19,14 +19,14 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@emotion/core": "^10.1.1",
+    "@emotion/react": "^11.1.5",
     "gatsby": ">=2.0.0",
     "react": "^17.0.1 || ^16.8.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
-    "@emotion/core": "^10.1.1",
+    "@emotion/react": "^11.1.5",
     "babel-preset-gatsby-package": "^0.5.3",
     "gatsby": "^2.25.1",
     "react": "^17.0.1",
