@@ -1,0 +1,26 @@
+{
+  "name": "@devsisters/console-easter-egg",
+  "version": "1.0.0",
+  "description": "Console easter egg libray at Devsisters Corp",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepublishOnly": "yarn && yarn build"
+  },
+  "keywords": [
+    "console",
+    "easteregg"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Devsisters Corp.",
+  "license": "UNLICENSED",
+  "dependencies": {},
+  "peerDependencies": {},
+  "devDependencies": {
+    "typescript": "^4.2.3"
+  }
+}
