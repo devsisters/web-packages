@@ -1,4 +1,4 @@
-export const printEasterEgg = (
+export const printImageEasterEgg = (
   imageUrl: string,
   scale = 1,
   messages?: string[]
@@ -16,6 +16,20 @@ export const printEasterEgg = (
   };
   img.src = imageUrl;
   img.style.background = "url(" + imageUrl + ")";
+};
+
+export const printAsciiCIText = (messages: string[] = []) => {
+  console.log(
+    `%c\n
+ \t██████╗ ███████╗██╗   ██╗███████╗██╗███████╗████████╗███████╗██████╗ ███████╗
+ \t██╔══██╗██╔════╝██║   ██║██╔════╝██║██╔════╝╚══██╔══╝██╔════╝██╔══██╗██╔════╝
+ \t██║  ██║█████╗  ██║   ██║███████╗██║███████╗   ██║   █████╗  ██████╔╝███████╗
+ \t██║  ██║██╔══╝  ╚██╗ ██╔╝╚════██║██║╚════██║   ██║   ██╔══╝  ██╔══██╗╚════██║
+ \t██████╔╝███████╗ ╚████╔╝ ███████║██║███████║   ██║   ███████╗██║  ██║███████║
+ \t╚═════╝ ╚══════╝  ╚═══╝  ╚══════╝╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════╝\n`,
+    "color: #fd7622; font-weight: bold;"
+  );
+  printExtraMessages(messages);
 };
 
 const getImgStyle = (width: number, height: number, scale = 1) => {
@@ -53,6 +67,10 @@ const printFromImgStyle = (
       style.height +
       "px; background-size: 100% 100%; background-repeat: norepeat; color: transparent;"
   );
+  printExtraMessages(messages);
+};
+
+const printExtraMessages = (messages: string[] = []) => {
   for (let i = 0; i < messages.length; i++) {
     console.log(messages[i]);
   }
