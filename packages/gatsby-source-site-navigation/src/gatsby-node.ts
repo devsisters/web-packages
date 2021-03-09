@@ -38,6 +38,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
     url: string,
   };
   type NodeData = {
+    trailerId: string,
     terms: { url: string },
     privacy: { url: string },
     cs: { url: string },
@@ -47,9 +48,11 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
     fax: string,
     items: Array<{ label: string, link: Link}>,
     socials: Array<{ symbol: string, label: string, link: Link}>,
+    appInformation:  Array<{ googleAppId: string, appleAppId: string, onestoreAppId: string, onelink: Link }>,
   };
   const body = {
     language: normalizeLanguage(node.lang as string),
+    trailerId: (node.data as NodeData).trailerId,
     terms: (node.data as NodeData).terms.url,
     privacy: (node.data as NodeData).privacy.url,
     cs: (node.data as NodeData).cs.url,
@@ -70,6 +73,12 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
         url: social.link.url,
       },
     })),
+    appInformation: (node.data as NodeData).appInformation.map((appInfo) => ({
+      googleAppId: appInfo.googleAppId,
+      appleAppId: appInfo.appleAppId,
+      onestoreAppId: appInfo.onestoreAppId,
+      onelink: appInfo.onelink.url,
+    }))[0],
   };
 
   actions.createNode({
@@ -124,8 +133,16 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       fax: String!
     }
 
+    type AppInformationType {
+      googleAppId: String
+      appleAppId: String
+      onestoreAppId: String
+      onelink: String!
+    }
+
     type SiteNavigation implements Node @dontInfer {
       language: String!
+      trailerId: String!
       terms: String!
       privacy: String!
       cs: String!
@@ -133,6 +150,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       company: CompanyInfo!
       entries: [SiteNavigationEntry!]!
       socials: [SiteNavigationSocial!]!
+      appInformation: AppInformationType!
     }
   `);
 };

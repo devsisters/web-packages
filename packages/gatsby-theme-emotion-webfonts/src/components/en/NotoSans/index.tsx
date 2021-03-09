@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Global, css } from '@emotion/core';
+import { Global, css } from '@emotion/react';
 
 import woff2 from './NotoSans-Regular.subset.woff2';
 import woff from './NotoSans-Regular.subset.woff';

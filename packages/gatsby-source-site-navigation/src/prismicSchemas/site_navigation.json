@@ -14,6 +14,49 @@
         "label" : "uid"
       }
     },
+    "trailerId" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "trailerId",
+        "placeholder" : "트레일러 비디오 유튜브 아이디"
+      }
+    },
+    "appInformation" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "googleAppId" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "googleAppId",
+              "placeholder" : "구글 앱 아이디"
+            }
+          },
+          "appleAppId" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "appleAppId",
+              "placeholder" : "애플 앱 아이디"
+            }
+          },
+          "onestoreAppId" : {
+            "type" : "Text",
+            "config" : {
+              "label" : "onestoreAppId",
+              "placeholder" : "원스토어 앱 아이디"
+            }
+          },
+          "onelink" : {
+            "type" : "Link",
+            "config" : {
+              "label" : "onelink",
+              "placeholder" : "원링크 주소"
+            }
+          }
+        },
+        "label" : "appInformation"
+      }
+    },
     "socialtype" : {
       "type" : "Select",
       "config" : {
