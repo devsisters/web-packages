@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build-ourstory": "node-sass scss/ourstory/main.scss css/ourstory.main.module.css"
+    "build-ourstory": "node-sass scss/ourstory/main.module.scss css/ourstory.main.module.css"
   },
   "devDependencies": {
     "node-sass": "^5.0.0"
