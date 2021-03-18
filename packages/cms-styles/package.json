@@ -1,0 +1,12 @@
+{
+  "name": "cms-styles",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build-ourstory": "node-sass scss/ourstory/main.scss css/ourstory.main.css"
+  },
+  "dependencies": {
+    "node-sass": "^5.0.0"
+  }
+}
