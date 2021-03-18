@@ -6,7 +6,7 @@
   "scripts": {
     "build-ourstory": "node-sass scss/ourstory/main.scss css/ourstory.main.module.css"
   },
-  "dependencies": {
+  "devDependencies": {
     "node-sass": "^5.0.0"
   }
 }
