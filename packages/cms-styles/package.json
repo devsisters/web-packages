@@ -6,6 +6,9 @@
   "scripts": {
     "build-ourstory": "node-sass scss/ourstory/main.module.scss css/ourstory.main.module.css"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "node-sass": "^5.0.0"
   }
