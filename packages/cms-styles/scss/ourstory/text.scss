@@ -1,0 +1,23 @@
+@import '../config.scss';
+
+.text {
+  color: #5b5b5b;
+  line-height: 2;
+  letter-spacing: -0.04em;
+  font-size: 17px;
+  margin-top: 50px;
+  white-space: pre-line;
+  &.mobile {
+    @include scale(margin-top, 57px);
+    @include scale(font-size, 26.5px);
+  }
+  p {
+    margin: 0;
+  }
+  strong {
+    font-weight: bold;
+  }
+  &:global(.white-space) {
+    user-select: none;
+  }
+}

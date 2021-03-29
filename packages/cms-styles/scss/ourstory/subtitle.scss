@@ -1,0 +1,27 @@
+@import '../config.scss';
+
+.subTitle {
+  width: 100%;
+  text-align: center;
+  white-space: pre-line;
+  hr {
+    width: 25%;
+    min-width: 250px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 1px solid #E5E5E5;
+  }
+  &.mobile hr {
+    @include scale(margin-top, 57px);
+    @include scale(margin-bottom, 57px);
+  }
+  h2 {
+    font-weight: bold;
+    letter-spacing: -0.04em;;
+    line-height: 1.75;
+    font-size: 24px;
+  }
+  &.mobile h2 {
+    @include scale(font-size, 34px);
+  }
+}

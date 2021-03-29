@@ -1,0 +1,15 @@
+{
+  "name": "@devsisters/cms-styles",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build-ourstory": "node-sass scss/ourstory/main.module.scss css/ourstory.main.module.css"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "node-sass": "^5.0.0"
+  }
+}
