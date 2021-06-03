@@ -1,16 +1,14 @@
-import React from 'react';
-import { css } from 'linaria';
+import * as  React from 'react';
+import HelloWorld from '~/src/components/Hello';
 
-interface IndexPageProps {
+type IndexPageProps = {
   location: Location;
 }
+
 const IndexPage: React.FC<IndexPageProps> = () => {
   return (
-    <h1 className={css`
-      color: orange;
-    `}>
-      Hello, World!
-    </h1>
+    <HelloWorld />
   );
 };
+
 export default IndexPage;

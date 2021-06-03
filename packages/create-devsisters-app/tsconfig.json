@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "lib": ["esnext"],
+    "lib": ["es2018", "dom", "esnext"],
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
@@ -14,8 +14,5 @@
       "~/*": ["*"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "templates"
-  ]
+  "exclude": ["node_modules", "templates"]
 }

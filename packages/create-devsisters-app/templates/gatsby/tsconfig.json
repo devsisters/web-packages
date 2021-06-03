@@ -1,22 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "lib": ["dom", "esnext"],
-    "jsx": "react",
+    "target": "ESNext",
+    "lib": ["es2018", "dom", "esnext"],
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "strict": true,
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "types": [
-      "node"
-    ],
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "noEmit": true,
+    "composite": true,
+    "incremental": true,
+    "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
       "~/*": ["*"]
     }
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["./src/**/*", "./typings/*", "./gatsby-config.ts", "./gatsby-node.ts"]
 }

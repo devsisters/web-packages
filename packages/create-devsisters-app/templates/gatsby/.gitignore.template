@@ -1,8 +1,16 @@
 .DS_Store
 
 /node_modules
-/public
-/.cache
-/.linaria-cache
 
-/.env/.env*.local
+public/
+.cache/
+
+*.tsbuildinfo
+
+.env*
+!.env.example
+
+src/__generated__/gatsby-types.ts
+src/__generated__/gatsby-schema.json
+src/__generated__/gatsby-schema.graphql
+src/__generated__/gatsby-plugin-documents.graphql
