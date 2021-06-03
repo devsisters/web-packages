@@ -41,6 +41,8 @@ export const siteMetadata: GatsbyConfig["siteMetadata"] = {
 };
 
 export const plugins: PluginConfig[] = [
+  "gatsby-plugin-sharp",
+  "gatsby-transformer-sharp",
   "gatsby-plugin-svgr",
   {
     resolve: "gatsby-plugin-module-resolver",

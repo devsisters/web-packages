@@ -16,6 +16,9 @@
   "dependencies": {
     "gatsby": "^3.2.1",
     "gatsby-plugin-manifest": "^3.2.0",
+    "gatsby-image": "^3.3.0",
+    "gatsby-plugin-sharp": "^3.2.1",
+    "gatsby-transformer-sharp": "^3.2.0",
     "gatsby-plugin-module-resolver": "^1.0.3",
     "gatsby-plugin-s3": "^0.3.8",
     "gatsby-plugin-svgr": "^3.0.0-beta.0",
