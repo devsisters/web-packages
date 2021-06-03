@@ -136,7 +136,7 @@ const IndexPage: React.FC = () => {
         </span>
       </h1>
       <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
+        Edit <code style={codeStyles}>src/pages/index.tsx</code> to see this page
         update in real-time.{" "}
         <span role="img" aria-label="Sunglasses smiley emoji">
           😎
