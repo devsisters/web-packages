@@ -1,6 +1,6 @@
 {
   "name": "create-devsisters-app",
-  "version": "0.2.8",
+  "version": "1.0.0",
   "description": "",
   "bin": "cli.js",
   "scripts": {
@@ -23,6 +23,6 @@
     "@types/mustache": "^0.8.32",
     "@types/node": "^12.0.10",
     "@types/yargs": "^13.0.0",
-    "typescript": "^3.5.2"
+    "typescript": "^4.2.4"
   }
 }
