@@ -53,6 +53,10 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
+    'jsx-quotes': [
+      'error',
+      'prefer-single'
+    ],
   },
   settings: {
     react: {

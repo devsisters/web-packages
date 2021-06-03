@@ -56,12 +56,15 @@ module.exports = {
       },
     ],
     indent: 'off',
+    'keyword-spacing': 'error',
     // See https://github.com/typescript-eslint/typescript-eslint/issues/1824
     // "@typescript-eslint/indent": ["error", 2],
     semi: 'off',
     '@typescript-eslint/semi': ['error', 'always'],
     quotes: 'off',
     '@typescript-eslint/quotes': ['error', 'single'],
+    'space-before-blocks': 'error',
+    'space-infix-ops': 'error',
     'eol-last': ['error', 'always'],
     'comma-dangle': 'off',
     '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
@@ -88,5 +91,22 @@ module.exports = {
         },
       },
     ],
+    '@typescript-eslint/type-annotation-spacing': [
+      'error',
+      {
+        before: false,
+        after: true,
+        overrides: {
+          colon: {
+            before: false,
+            after: true
+          },
+          arrow: {
+            before: true,
+            after: true
+          }
+        }
+      }
+    ]
   },
 };
