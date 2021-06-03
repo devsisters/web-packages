@@ -2,6 +2,7 @@ import type { GatsbyConfig, IPluginRefObject } from "gatsby";
 import type { FileSystemOptions } from "gatsby-source-filesystem";
 import type { PluginOptions as TypegenPlugionOptions } from "gatsby-plugin-typegen/types";
 import type { PluginOptions as ModuleResolverOptions } from "gatsby-plugin-module-resolver/types";
+import type { PluginOptions as S3PluginOption } from "gatbsy-plugin-s3/types";
 
 type OverrideProps<TBaseProps, TNewProps> = Omit<TBaseProps, keyof TNewProps> &
   TNewProps;
@@ -30,12 +31,13 @@ type PluginConfig =
   | PluginRef<"gatsby-plugin-manifest">
   | PluginRef<"gatsby-source-filesystem", FileSystemOptions>
   | PluginRef<"gatsby-plugin-typegen", TypegenPlugionOptions>
-  | PluginRef<"gatsby-plugin-module-resolver", ModuleResolverOptions>;
+  | PluginRef<"gatsby-plugin-module-resolver", ModuleResolverOptions>
+  | PluginRef<"gatsby-plugin-s3", S3PluginOption>;
 
 export const siteMetadata: GatsbyConfig["siteMetadata"] = {
   siteUrl: publicURL.origin,
-  title: "",
-  description: "",
+  title: "create-devsisters-app",
+  description: "create-devsisters-app",
 };
 
 export const plugins: PluginConfig[] = [
@@ -71,9 +73,9 @@ export const plugins: PluginConfig[] = [
   {
     resolve: "gatsby-plugin-manifest",
     options: {
-      name: "",
-      short_name: "",
-      description: "",
+      name: "create-devsisters-app",
+      short_name: "create-devsisters-app",
+      description: "create-devsisters-app",
       start_url: "/",
       lang: "ko",
       background_color: "#FFFFFF",
