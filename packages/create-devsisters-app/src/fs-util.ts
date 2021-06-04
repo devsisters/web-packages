@@ -1,14 +1,15 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { promisify } from 'util';
+import * as fs from "fs";
+import * as path from "path";
+import { promisify } from "util";
 
-import * as makeDir from 'make-dir';
+import * as makeDir from "make-dir";
 
 const readdir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 const stat = promisify(fs.stat);
-const filterNotNull = <T>(arr: T[]) => (arr.filter(v => v != null) as NonNullable<T>[]);
+const filterNotNull = <T>(arr: T[]) =>
+  arr.filter((v) => v != null) as NonNullable<T>[];
 
 export interface FileTree {
   [name: string]: FileTree | Buffer;
@@ -23,7 +24,7 @@ export async function readAll(dir: string): Promise<FileTree> {
   }
   const a = filterNotNull(
     await Promise.all(
-      itemNames.map(async name => {
+      itemNames.map(async (name) => {
         const statResult = await stat(path.resolve(dir, name));
         const isFile = statResult.isFile();
         const isDirectory = statResult.isDirectory();
@@ -32,11 +33,13 @@ export async function readAll(dir: string): Promise<FileTree> {
       })
     )
   );
-  const b = await Promise.all(a.map(async ({ isFile, name }) => {
-    const itemPath = path.resolve(dir, name);
-    if (isFile) return [name, await readFile(itemPath)] as const;
-    return [name, await readAll(itemPath)] as const;
-  }));
+  const b = await Promise.all(
+    a.map(async ({ isFile, name }) => {
+      const itemPath = path.resolve(dir, name);
+      if (isFile) return [name, await readFile(itemPath)] as const;
+      return [name, await readAll(itemPath)] as const;
+    })
+  );
   for (const [key, value] of b) result[key] = value;
   return result;
 }
@@ -46,7 +49,10 @@ export async function writeAll(dir: string, fileTree: FileTree): Promise<void> {
   for (const [name, value] of Object.entries(fileTree)) {
     const itemPath = path.resolve(dir, name);
     if (Buffer.isBuffer(value)) {
-      await writeFile(itemPath, value);
+      const encoding = /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i.test(itemPath)
+        ? "base64"
+        : "utf8";
+      await writeFile(itemPath, value, encoding);
     } else {
       await writeAll(itemPath, value);
     }
