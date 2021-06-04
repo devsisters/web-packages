@@ -1,6 +1,6 @@
 {
   "name": "create-devsisters-app",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "",
   "bin": "cli.js",
   "scripts": {
