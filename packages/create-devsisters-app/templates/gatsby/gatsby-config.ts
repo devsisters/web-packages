@@ -83,6 +83,7 @@ export const plugins: PluginConfig[] = [
       background_color: "#FFFFFF",
       theme_color: "#FFFFFF",
       display: "minimal-ui",
+      icon: "src/images/icon.svg",
     },
   },
   {
