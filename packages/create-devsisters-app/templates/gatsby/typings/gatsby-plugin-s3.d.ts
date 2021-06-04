@@ -1,5 +1,5 @@
 // See https://github.com/jariz/gatsby-plugin-s3/blob/master/src/constants.ts
-declare module 'gatsby-plugin-s3' {
+declare module 'gatsby-plugin-s3/types' {
   import type { BucketCannedACL, Types } from 'aws-sdk/clients/s3';
   import type { PluginOptions } from 'gatsby';
 

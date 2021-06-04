@@ -2,7 +2,7 @@ import type { GatsbyConfig, IPluginRefObject } from "gatsby";
 import type { FileSystemOptions } from "gatsby-source-filesystem";
 import type { PluginOptions as TypegenPlugionOptions } from "gatsby-plugin-typegen/types";
 import type { PluginOptions as ModuleResolverOptions } from "gatsby-plugin-module-resolver/types";
-import type { PluginOptions as S3PluginOption } from "gatbsy-plugin-s3/types";
+import type { S3PluginOptions } from "gatsby-plugin-s3/types";
 
 type OverrideProps<TBaseProps, TNewProps> = Omit<TBaseProps, keyof TNewProps> &
   TNewProps;
@@ -32,7 +32,7 @@ type PluginConfig =
   | PluginRef<"gatsby-source-filesystem", FileSystemOptions>
   | PluginRef<"gatsby-plugin-typegen", TypegenPlugionOptions>
   | PluginRef<"gatsby-plugin-module-resolver", ModuleResolverOptions>
-  | PluginRef<"gatsby-plugin-s3", S3PluginOption>;
+  | PluginRef<"gatsby-plugin-s3", S3PluginOptions>;
 
 export const siteMetadata: GatsbyConfig["siteMetadata"] = {
   siteUrl: publicURL.origin,
