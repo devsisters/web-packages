@@ -11,7 +11,8 @@
     "develop": "gatsby develop",
     "deploy": "gatsby-plugin-s3 deploy",
     "check-types": "tsc --noEmit --skipLibCheck",
-    "prepare": "husky install .husky"
+    "prepare": "husky install .husky",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "gatsby": "^3.6.2",
