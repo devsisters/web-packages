@@ -67,5 +67,6 @@ export const run: RunProcess = async () => {
   await writeAll(cwd, fileTree);
   await spawn('git init', { cwd });
   await spawn('npm ci', { cwd });
+  await spawn('chmod +x .husky/pre-commit', { cwd });
   process.exit(0);
 };
