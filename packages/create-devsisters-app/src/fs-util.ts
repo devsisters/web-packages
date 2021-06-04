@@ -49,10 +49,7 @@ export async function writeAll(dir: string, fileTree: FileTree): Promise<void> {
   for (const [name, value] of Object.entries(fileTree)) {
     const itemPath = path.resolve(dir, name);
     if (Buffer.isBuffer(value)) {
-      const encoding = /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i.test(itemPath)
-        ? "base64"
-        : "utf8";
-      await writeFile(itemPath, value, encoding);
+      await writeFile(itemPath, value);
     } else {
       await writeAll(itemPath, value);
     }
