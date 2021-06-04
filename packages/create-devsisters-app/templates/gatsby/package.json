@@ -11,7 +11,7 @@
     "develop": "gatsby develop",
     "deploy": "gatsby-plugin-s3 deploy",
     "check-types": "tsc --noEmit --skipLibCheck",
-    "prepare": "cd .. && husky install frontend/.husky"
+    "prepare": "cd .. && husky install <{ projectNameKebab }>/.husky"
   },
   "dependencies": {
     "gatsby": "^3.6.2",
