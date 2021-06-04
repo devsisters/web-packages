@@ -1,71 +1,22 @@
 {
-  "new gatsby page": {
-    "prefix": "newpage",
-    "description": "새 웹페이지를 만듭니다.",
-    "scope": "typescriptreact",
-    "body": [
-      "import React from 'react';",
-      "import { css } from 'linaria';",
-      "",
-      "interface ${1:${TM_FILENAME_BASE/([^-\\.]+)(?:-|\\.)?/${1:/capitalize}/g}}PageProps {",
-      "  location: Location;",
-      "}",
-      "const $1Page: React.FC<$1PageProps> = () => {",
-      "  return (",
-      "    <div className={css`",
-      "      /* style */",
-      "    `}>",
-      "      $0($TM_FILENAME_BASE) 페이지 내용",
-      "    </div>",
-      "  );",
-      "};",
-      "export default $1Page;",
-      ""
-    ]
-  },
-  "new react component file": {
-    "scope": "typescriptreact",
-    "prefix": "newcomponentfile",
-    "body": [
-      "import React, { memo } from 'react';",
-      "import { css, cx } from 'linaria';",
-      "",
-      "interface ${1:$TM_FILENAME_BASE}Props {",
-      "  id?: string;",
-      "  className?: string;",
-      "}",
-      "const $1: React.FC<$1Props> = ({ id, className }) => {",
-      "  return (",
-      "    <div id={id} className={cx(css`",
-      "      /* style */",
-      "    `, className)}>",
-      "      $0($TM_FILENAME_BASE) 컴포넌트 내용",
-      "    </div>",
-      "  );",
-      "};",
-      "export default memo($1);",
-      ""
-    ],
-    "description": "새 리액트 컴포넌트 파일을 만듭니다."
-  },
-  "new react component": {
-    "scope": "typescriptreact",
+  "New Component": {
     "prefix": "newcomponent",
     "body": [
-      "interface ${1:MyComponent}Props {",
-      "  id?: string;",
-      "  className?: string;",
-      "}",
-      "const $1: React.FC<$1Props> = memo(({ id, className }) => {",
+      "import * as React from 'react';",
+      "",
+      "type ${1:${TM_FILENAME_BASE/([^-\\\\\\\\.]+)(?:-|\\\\\\\\.)?/${1:/capitalize}/g}}Props = {",
+      "};",
+      "",
+      "const $1: React.FC<$1Props> = ({",
+      "  children,",
+      "}) => {",
       "  return (",
-      "    <div id={id} className={cx(css`",
-      "      /* common style */",
-      "    `, className)}>",
-      "      $0($TM_FILENAME_BASE) 컴포넌트 내용",
-      "    </div>",
       "  );",
-      "});"
+      "};",
+      "",
+      "export default $1;",
+      ""
     ],
-    "description": "새 리액트 컴포넌트를 만듭니다."
+    "description": "New Component"
   }
 }

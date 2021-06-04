@@ -59,11 +59,14 @@ export const run: RunProcess = async () => {
   });
   { // npm에 `.gitignore`파일은 올라가지 않으므로 `.gitignore.template` 파일을 만들어서 우회.
     fileTree['.gitignore'] = fileTree['.gitignore.template'];
+    fileTree[".env"] = fileTree[".env.template"];
     delete fileTree['.gitignore.template'];
+    delete fileTree[".env.template"];
   }
   const cwd = path.resolve(projectName);
   await writeAll(cwd, fileTree);
   await spawn('git init', { cwd });
   await spawn('npm ci', { cwd });
+  await spawn('chmod +x .husky/pre-commit', { cwd });
   process.exit(0);
 };
