@@ -2,8 +2,6 @@
   "parser": "@typescript-eslint/parser",
   "extends": [
     "plugin:@devsisters/web/frontend",
-    "plugin:prettier/recommended",
-    "prettier/@typescript-eslint"
   ],
   "parserOptions": {
     "project": ["tsconfig.json", "**/tsconfig.json"]
