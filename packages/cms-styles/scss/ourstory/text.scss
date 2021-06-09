@@ -1,23 +1,33 @@
 @import '../config.scss';
 
-.text {
+.fr-element {
   color: #5b5b5b;
   line-height: 2;
   letter-spacing: -0.04em;
   font-size: 17px;
-  margin-top: 50px;
   white-space: pre-line;
-  &.mobile {
-    @include scale(margin-top, 57px);
-    @include scale(font-size, 26.5px);
-  }
   p {
     margin: 0;
+    margin-top: 32px;
   }
   strong {
     font-weight: bold;
   }
+  ul, ol {
+    padding: 0;
+    padding-left: 50px;
+  }
   &:global(.white-space) {
     user-select: none;
+  }
+  @media (max-width: $desktop-width) {
+    font-size: rem(17);
+    margin-top: rem(32);
+    ul, ol {
+      padding-left: rem(30);
+    }
+  }
+  @media (max-width: $mobile-width) {
+    font-size: rem(15);
   }
 }
