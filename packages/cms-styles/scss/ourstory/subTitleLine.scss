@@ -1,0 +1,14 @@
+@import '../config.scss';
+
+.fr-element {
+  hr {
+    width: 25%;
+    min-width: 250px;
+    margin-top: 50px;
+    border: 1px solid #E5E5E5;
+
+    @media (max-width: $mobile-width) {
+      margin-top: rem(32);
+    }
+  }
+}

@@ -1,10 +1,20 @@
 @import '../config.scss';
 
 .fr-element {
-  .sub_title {
+  .sub_title_quote {
     width: 100%;
     text-align: center;
     white-space: pre-line;
+    &:before {
+      width: rem(27);
+      height: rem(18);
+      content: '';
+      display: inline-block;
+      background: url('./quote.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-top: rem(26);
+    }
     h2 {
       color: #000;
       font-weight: bold;
@@ -12,7 +22,6 @@
       line-height: 1.75;
       font-size: 24px;
       margin: 0;
-      margin-top: 36px;
     }
     span {
       color: #909090;
@@ -23,7 +32,6 @@
     @media (max-width: $mobile-width) {
       h2 {
         font-size: rem(19);
-        margin-top: rem(18);
       }
       span {
         font-size: rem(13);

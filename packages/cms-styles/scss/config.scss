@@ -1,6 +1,8 @@
 $mobile-width: 640px; // 부드럽게 쪼그라들기 시작할 시점
 $desktop-width: 960px;
 
+$base-font-size: 16;
+
 // font-weight
 $regular: 400;
 $medium: 500;
@@ -16,6 +18,9 @@ $max-grid-width: 1920px;
 $grid: $max-grid-width / 8;
 $side-width: $grid;
 $content-width: $grid * 4;
+
+$navbar-height: 56px;
+$navbar-height-mobile: 46px;
 
 $basic-easing: cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -35,25 +40,8 @@ $basic-easing: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
-@mixin scale($property, $px) {
-  $w: $mobile-width / 1px;
-  $pxs: null;
-  $vws: null;
-  @each $v in $px {
-    @if type-of($v) == 'number' {
-      $px: $v / 1px;
-      $pxs: append($pxs, if($px == 0, 0, $px + px));
-      $vw: $px / $w * 100;
-      $vws: append($vws, if($vw == 0, 0, $vw + vw));
-    } @else {
-      $pxs: append($pxs, $v);
-      $vws: append($vws, $v);
-    }
-  }
-  #{$property}: $pxs;
-  @media (max-width: $mobile-width) {
-    #{$property}: $vws;
-  }
+@function rem($px, $base: $base-font-size) {
+  @return ($px / $base) + rem;
 }
 
 @mixin clear() {
@@ -100,15 +88,15 @@ $basic-easing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @mixin board-item-mobile() {
-  @include scale(height, 116px);
+  height: rem(75);
   display: block;
   &:last-child {
-    @include scale(border-bottom, solid $orange 1px);
+    border-bottom: $orange solid 1px;
   }
 
   & > span {
     display: none;
-    font-size: 17rem;
+    font-size: rem(10);
   }
 
   .board-title.board-title,
@@ -118,19 +106,29 @@ $basic-easing: cubic-bezier(0.4, 0, 0.2, 1);
     color: #666666;
     line-height: 1;
     text-align: left;
+    font-size: rem(14);
   }
 
   .board-title.board-title {
-    @include scale(padding-top, 16px);
-    @include scale(margin-bottom, 8px);
+    padding-top: rem(10);
+    margin-bottom: rem(5);
     line-height: 2;
     width: 90%;
-    font-size: 24rem;
+    font-size: rem(16);
     text-align: left;
     text-indent: 0;
   }
 
   .date.date {
     width: 100%;
+  }
+  @media (max-width: $mobile-width) {
+    height: rem(68);
+    .date.date {
+      font-size: rem(12);
+    }
+    .board-title.board-title {
+      font-size: rem(14);
+    }
   }
 }
