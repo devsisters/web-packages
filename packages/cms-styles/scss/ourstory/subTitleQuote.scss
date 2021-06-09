@@ -10,7 +10,9 @@
       height: rem(18);
       content: '';
       display: inline-block;
-      background: url('http://localhost:8000/quote.svg');
+      background: url('./quote.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
       margin-top: rem(26);
     }
     h2 {
