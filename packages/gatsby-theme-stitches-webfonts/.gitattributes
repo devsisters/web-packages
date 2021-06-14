@@ -1,0 +1,5 @@
+*.subset.ttf         linguist-vendored=true
+*.subset.otf         linguist-vendored=true
+*.subset.woff        linguist-vendored=true
+*.subset.woff2       linguist-vendored=true
+*LICENSE.txt         linguist-vendored=true

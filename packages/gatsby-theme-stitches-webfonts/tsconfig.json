@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": true,
+    "composite": true,
+    "incremental": true,
+    "jsx": "preserve",
+    "paths": {
+      "gatsby-theme-stitches/src/*": ["./src/gatsby-theme-stitches/*"]
+    }
+  },
+  "include": [
+    "src",
+    "typings"
+  ]
+}

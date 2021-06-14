@@ -2076,6 +2076,11 @@
     escape-string-regexp "^2.0.0"
     lodash.deburr "^4.1.0"
 
+"@stitches/react@^0.2.0-canary.5":
+  version "0.2.0-canary.5"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-0.2.0-canary.5.tgz#52c48ed7a092997fbb85bead1f22fcf41ce4de9b"
+  integrity sha512-Ym4tLUmKpSQOwwsDIAGGWsz++QD+vO63geEJUzxg6pqDEb8svO4g8aJg5XmOUS8RDhzyh4abaX6hR6/TAZwj1A==
+
 "@szmarczak/http-timer@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@szmarczak/http-timer/-/http-timer-1.1.2.tgz#b1665e2c461a2cd92f4c1bbf50d5454de0d4b421"
@@ -7168,6 +7173,11 @@ gatsby-telemetry@^1.6.0:
     lodash "^4.17.20"
     node-fetch "^2.6.1"
     uuid "3.4.0"
+
+gatsby-theme-stitches@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-stitches/-/gatsby-theme-stitches-0.1.1.tgz#cea0aad6d7ed232ef61e6b2b71c2e594a9782c4f"
+  integrity sha512-RlIa/WaKZ4oRCfXLcPYsORaXZhYIxtMHneE8IlDVP7MiO/zU516U5akJGo3qi7Ddn08dcKzxM5nsfTFP/2elFg==
 
 gatsby@^2.13.52, gatsby@^2.18.7, gatsby@^2.25.1:
   version "2.25.1"
