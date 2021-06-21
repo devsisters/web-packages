@@ -1,6 +1,7 @@
 @import '../config.scss';
 
 .fr-element {
+  word-break: keep-all;
   .highlight_text {
     margin: 0;
     font-weight: bold;
@@ -15,7 +16,11 @@
       margin-top: rem(32);
     }
     @media (max-width: $mobile-width) {
+      white-space: initial;
       font-size: rem(16);
+      br {
+        display: none;
+      }
     }
   }
 }

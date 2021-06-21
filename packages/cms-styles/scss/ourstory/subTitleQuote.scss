@@ -1,6 +1,7 @@
 @import '../config.scss';
 
 .fr-element {
+  word-break: keep-all;
   .sub_title_quote {
     width: 100%;
     text-align: center;
@@ -30,12 +31,16 @@
       display: inline-block;
     }
     @media (max-width: $mobile-width) {
+      white-space: initial;
       h2 {
         font-size: rem(19);
       }
       span {
         font-size: rem(13);
         margin-top: rem(4);
+      }
+      br {
+        display: none;
       }
     }
   }

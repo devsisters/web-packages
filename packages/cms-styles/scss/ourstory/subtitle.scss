@@ -1,6 +1,7 @@
 @import '../config.scss';
 
 .fr-element {
+  word-break: keep-all;
   .sub_title {
     width: 100%;
     text-align: center;
@@ -21,6 +22,7 @@
       display: inline-block;
     }
     @media (max-width: $mobile-width) {
+      white-space: initial;
       h2 {
         font-size: rem(19);
         margin-top: rem(18);
@@ -28,6 +30,9 @@
       span {
         font-size: rem(13);
         margin-top: rem(4);
+      }
+      br {
+        display: none;
       }
     }
   }
