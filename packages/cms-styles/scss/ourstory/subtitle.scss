@@ -15,6 +15,9 @@
       margin: 0;
       margin-top: 36px;
     }
+    h2 br {
+      display: initial;
+    }
     span {
       color: #909090;
       font-size: rem(16);
@@ -27,12 +30,12 @@
         font-size: rem(19);
         margin-top: rem(18);
       }
+      h2 br {
+        display: none;
+      }
       span {
         font-size: rem(13);
         margin-top: rem(4);
-      }
-      br {
-        display: none;
       }
     }
   }
