@@ -11,6 +11,7 @@
     margin-top: 50px;
   }
   p.center {
+    margin: 0;
     text-align: center;
   }
   strong {
@@ -25,7 +26,12 @@
   }
   @media (max-width: $desktop-width) {
     font-size: rem(17);
-    margin-top: rem(32);
+    p {
+      margin-top: rem(32);
+    }
+    p.center {
+      margin: 0;
+    }
     ul, ol {
       padding-left: rem(30);
     }
