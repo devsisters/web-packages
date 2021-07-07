@@ -9,11 +9,11 @@
       width: rem(27);
       height: rem(18);
       content: '';
-      display: inline-block;
+      display: block;
       background: url("data:image/svg+xml,<svg width='27' height='18' viewBox='0 0 27 18' fill='rgb(255,118,34)' xmlns='http://www.w3.org/2000/svg'><path d='M26.5091 12.5308C26.5091 16.1769 24.4286 18 20.2675 18C16.1065 18 14.026 15.9231 14.026 11.7692C14.026 7.56923 16.9714 3.64615 22.8623 0L27 1.52307L22.6519 7.13077L22.7922 7.47692C25.2701 7.98461 26.5091 9.66923 26.5091 12.5308ZM12.4831 12.5308C12.4831 16.1769 10.4026 18 6.24156 18C2.08052 18 0 15.9231 0 11.7692C0 7.56923 2.94545 3.64615 8.83636 0L12.974 1.52307L8.62597 7.13077L8.76623 7.47692C11.2442 7.98461 12.4831 9.66923 12.4831 12.5308Z'/></svg>") no-repeat;
       background-size: contain;
       background-repeat: no-repeat;
-      margin-top: rem(26);
+      margin: rem(26) auto rem(8) auto;
     }
     h2 {
       text-align: center;
@@ -38,7 +38,7 @@
       }
       span {
         font-size: rem(13);
-        margin-top: rem(4);
+        margin: rem(4) auto rem(8) auto;
       }
       br {
         display: none;
