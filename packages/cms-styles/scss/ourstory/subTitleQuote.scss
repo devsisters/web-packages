@@ -4,7 +4,6 @@
   word-break: keep-all;
   .sub_title_quote {
     width: 100%;
-    text-align: center;
     white-space: pre-line;
     &:before {
       width: rem(27);
@@ -17,6 +16,7 @@
       margin-top: rem(26);
     }
     h2 {
+      text-align: center;
       color: #000;
       font-weight: bold;
       letter-spacing: -0.04em;;
@@ -25,6 +25,7 @@
       margin: 0;
     }
     span {
+      text-align: center;
       color: #909090;
       font-size: 16px;
       margin-top: 10px;
