@@ -10,7 +10,7 @@ interface PluginOptions {
     realm?: string;
 }
 
-export default ({ element }: any, pluginOptions: PluginOptions) => {
+export default ({ element }: { element: React.ReactNode }, pluginOptions: PluginOptions) => {
     return (
         <Login pluginOptions={pluginOptions}>
             {element}
