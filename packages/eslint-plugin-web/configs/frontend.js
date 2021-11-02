@@ -27,7 +27,6 @@ module.exports = {
     react: {
       version: 'detect',
     },
-    'import/internal-regex': '^~/',
   },
   overrides: [
     {
