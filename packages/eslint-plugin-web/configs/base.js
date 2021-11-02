@@ -10,13 +10,52 @@ module.exports = {
     // It is better to setup project path manually
     // project: [],
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'import'],
   extends: [
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
   ],
   rules: {
+    'no-restricted-globals': ['error'].concat(restrictedGlobals),
+    'no-console': 'warn',
+    'import/no-unresolved': ['error', { commonjs: true, caseSensitive: true }],
+    'import/no-self-import': 'error',
+    'import/no-cycle': 'error',
+    'import/no-useless-path-segments': 'error',
+    'import/unambiguous': 'error',
+    'import/no-amd': 'error',
+    'import/no-deprecated': 'error',
+    'import/no-mutable-exports': 'error',
+    'import/no-nodejs-modules': 'error',
+    'import/no-duplicates': 'error',
+    'import/first': 'error',
+    'import/newline-after-import': 'error',
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type'
+        ],
+        pathGroups: [
+          {
+            pattern: '~/**',
+            group: 'internal',
+          },
+        ],
+        'newlines-between': 'always',
+      },
+    ],
     'max-len': [
       'error',
       {
