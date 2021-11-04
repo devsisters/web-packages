@@ -1,5 +1,3 @@
-const restrictedGlobals = require('confusing-browser-globals');
-
 module.exports = {
   plugins: ['react', 'react-hooks', 'jsx-a11y'],
   extends: [
