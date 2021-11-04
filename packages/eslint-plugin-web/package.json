@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/eslint-plugin-web",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Devisisters' pre-configured ESLint settings.",
   "author": "Devsisters Corp.",
   "license": "UNLICENSED",
