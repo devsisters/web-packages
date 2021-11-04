@@ -14,6 +14,13 @@ yarn add -D eslint typescript @devsisters/eslint-plugin-web
 
 프로젝트 경로에 `.eslintrc.js` (또는 json, yaml) 파일을 추가합니다.
 
+## ESLint 의존성
+
+| ESLint | @devsisters/eslint-plugin-web |
+|--------|-------------------------------|
+| >= 8.x | >= 1.3.0                      |
+| < 8.x  | *                             |
+
 ### 프론트엔드 설정 예시:
 
 ```js
