@@ -1,3 +1,5 @@
+const restrictedGlobals = require('confusing-browser-globals');
+
 module.exports = {
   parser: require.resolve('@typescript-eslint/parser'),
   parserOptions: {
@@ -95,9 +97,9 @@ module.exports = {
       },
     ],
     indent: 'off',
-    'keyword-spacing': 'error',
     // See https://github.com/typescript-eslint/typescript-eslint/issues/1824
-    // "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/indent": ["error", 2],
+    'keyword-spacing': 'error',    
     semi: 'off',
     '@typescript-eslint/semi': ['error', 'always'],
     quotes: 'off',
