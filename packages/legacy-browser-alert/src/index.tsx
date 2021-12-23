@@ -49,7 +49,7 @@ const AlertComponent = ({ locale = 'ko'}: Props) => {
         {
           locale === 'ko' ?
             <>
-              Internet Explorer는 지원하지 않는 브라우저입니다. <a style={anchorStyle} href="https://www.google.com/chrome/">Chrome</a> 또는 <a style={anchorStyle} href="https://www.mozilla.org/firefox/">Firefox</a> 같은 최신 브라우저를 사용해주세요.
+              Internet Explorer는 지원하지 않는 브라우저입니다. <a style={anchorStyle} href="https://www.google.com/chrome/">Chrome</a> 또는 <a style={anchorStyle} href="https://www.mozilla.org/firefox/">Firefox</a> 등 최신 브라우저를 사용해주세요.
             </>
               :
               <>
