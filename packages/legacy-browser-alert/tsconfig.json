@@ -9,7 +9,7 @@
     "strict": true,
     "composite": true,
     "incremental": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": false,
