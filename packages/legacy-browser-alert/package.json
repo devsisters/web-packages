@@ -4,13 +4,15 @@
   "description": "Alert component for legacy browsers",
   "main": "index.js",
   "typings": "index.d.ts",
-  "files": [],
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "yarn && yarn build"
   },
   "author": "Devsisters Corp.",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
