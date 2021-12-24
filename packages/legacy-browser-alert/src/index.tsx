@@ -8,9 +8,10 @@ const ieRegexes = [
 
 type Props = {
   locale?: 'ko' | 'en';
+  sx?: React.CSSProperties;
 }
 
-const AlertComponent = ({ locale = 'ko'}: Props) => {
+const AlertComponent = ({ locale = 'ko', sx }: Props) => {
   const userAgent = window?.navigator?.userAgent;
   const isIE = ieRegexes.some(regex => regex.test(userAgent));
   if (!isIE) {
@@ -29,6 +30,7 @@ const AlertComponent = ({ locale = 'ko'}: Props) => {
 
     backgroundColor: '#FFF0F0',
     color: '#D22030',
+    ...sx,
   };
 
   const anchorStyle = {
