@@ -9,9 +9,10 @@ const ieRegexes = [
 type Props = {
   locale?: 'ko' | 'en';
   sx?: React.CSSProperties;
+  onClose?: () => void;
 }
 
-const AlertComponent = ({ locale = 'ko', sx }: Props) => {
+const AlertComponent = ({ locale = 'ko', sx, onClose }: Props) => {
   const userAgent = window?.navigator?.userAgent;
   const isIE = ieRegexes.some(regex => regex.test(userAgent));
   if (!isIE) {
@@ -42,6 +43,18 @@ const AlertComponent = ({ locale = 'ko', sx }: Props) => {
     marginLeft: '0.25rem',
   }
 
+  const buttonStyle = {
+    marginLeft: '0.25rem',
+    border: 0,
+
+    background: 'transparent',
+    textDecoration: 'underline',
+    fontSize: '0.85rem',
+
+    appearance: 'none' as const,
+    cursor: 'pointer',
+  }
+
   return (
     <div style={containerStyle}>
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
@@ -59,6 +72,11 @@ const AlertComponent = ({ locale = 'ko', sx }: Props) => {
               </>
         }
       </span>
+      {onClose && (
+        <button style={buttonStyle} onClick={onClose}>
+          {locale === 'ko' ? '닫기' : 'Close'}
+        </button>
+      )}
     </div>
   );
 }
