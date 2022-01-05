@@ -67,10 +67,10 @@ const AlertComponent = ({ locale = 'ko', sx, onClose }: Props) => {
             <>
               Internet Explorer는 지원하지 않는 브라우저입니다. <a style={anchorStyle} href="https://www.google.com/chrome/">Chrome</a> 또는 <a style={anchorStyle} href="https://www.mozilla.org/firefox/">Firefox</a> 등 최신 브라우저를 사용해주세요.
             </>
-              :
-              <>
-                Internet Explorer is not supported. Please use a modern browser like <a style={anchorStyle} href="https://www.google.com/chrome/">Chrome</a> or <a style={anchorStyle} href="https://www.mozilla.org/firefox/">Firefox</a>.
-              </>
+            :
+            <>
+              Internet Explorer is not supported. Please use a modern browser like <a style={anchorStyle} href="https://www.google.com/chrome/">Chrome</a> or <a style={anchorStyle} href="https://www.mozilla.org/firefox/">Firefox</a>.
+            </>
         }
       </span>
       {onClose && (
