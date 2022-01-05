@@ -24,7 +24,7 @@ const AlertComponent = ({ locale = 'ko', sx, onClose }: Props) => {
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    padding: '1rem 0',
+    padding: '1rem 0.5rem',
 
     fontSize: '1rem',
     textAlign: 'center' as const,
