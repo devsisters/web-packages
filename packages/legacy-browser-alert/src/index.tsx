@@ -41,6 +41,7 @@ const AlertComponent = ({ locale = 'ko', sx, onClose }: Props) => {
 
   const spanStyle = {
     marginLeft: '0.25rem',
+    flex: 1,
   }
 
   const buttonStyle = {
