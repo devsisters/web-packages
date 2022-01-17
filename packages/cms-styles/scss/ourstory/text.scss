@@ -6,37 +6,53 @@
   letter-spacing: -0.04em;
   font-size: 17px;
   white-space: pre-line;
+
   p {
     margin: 0;
     margin-top: 50px;
     word-break: break-all;
   }
+
+  p:lang(en) {
+    word-break: keep-all;
+  }
+
   p.center {
     margin: 0;
     text-align: center;
   }
+
   strong {
     font-weight: bold;
   }
-  ul, ol {
+
+  ul,
+  ol {
     padding: 0;
     padding-left: 50px;
   }
+
   &:global(.white-space) {
     user-select: none;
   }
+
   @media (max-width: $desktop-width) {
     font-size: rem(17);
+
     p {
       margin-top: rem(32);
     }
+
     p.center {
       margin: 0;
     }
-    ul, ol {
+
+    ul,
+    ol {
       padding-left: rem(30);
     }
   }
+
   @media (max-width: $mobile-width) {
     font-size: rem(15);
   }
