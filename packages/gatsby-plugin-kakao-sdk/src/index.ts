@@ -95,6 +95,7 @@ interface KakaoTalkLinkV2DefaultOptionsTextType extends KakaoTalkLinkV2DefaultOp
 
 interface KakaoTalkLinkV2ScrapOptions {
   requestUrl: string;
+  installTalk: boolean;
 }
 
 interface KakaoTalkLinkV2CustomOptions {
