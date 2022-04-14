@@ -1,13 +1,13 @@
 import type { ThemeOptions } from './types';
 
 export function normalizeLanguage(lang: string) {
-  const supportedLangs = ['en', 'ja', 'ko', 'th', 'zh-Hant', 'zh-Hans'] as const;
+  const supportedLangs = ['en', 'ja', 'ko', 'th', 'zh-Hant', 'zh-Hans', 'de', 'fr'] as const;
   type SupportedLanguage = typeof supportedLangs[number];
 
   const normalized = lang
     .replace(/.*(tw).*/i, 'zh-Hant')
     .replace(/.*(cn).*/i, 'zh-Hans')
-    .replace(/.*(en|ja|ko|th|zh-Hant|zh-Hans).*/i, '$1') as SupportedLanguage;
+    .replace(/.*(en|ja|ko|th|zh-Hant|zh-Hans|de|fr).*/i, '$1') as SupportedLanguage;
 
   if (!supportedLangs.includes(normalized)) {
     throw new Error(`language: ${lang} is not supported`);
