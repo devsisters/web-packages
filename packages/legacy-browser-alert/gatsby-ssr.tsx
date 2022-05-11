@@ -54,7 +54,7 @@ export const onRenderBody = ({ setHeadComponents }: any, pluginOptions: PluginOp
               + '  var isIE = /MSIE|Trident/.test(window.navigator.userAgent);'
               + ''
               + '  if (isIE) {'
-              + '    return window.location.href = "https://please-never-ie.devsisters.com/";'
+              + '    return window.location.href = "https://goodbye-ie.devsisters.com/";'
               + '  }'
               + '})();',
           }}
