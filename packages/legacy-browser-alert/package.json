@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/legacy-browser-alert",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Alert component for legacy browsers",
   "main": "index.js",
   "typings": "index.d.ts",
