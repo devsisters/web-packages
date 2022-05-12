@@ -44,7 +44,10 @@ export const onRenderBody = ({ setHeadComponents }: any, pluginOptions: PluginOp
         />,
       ]);
       break;
-    case 'navigate':
+    case 'banner':
+      break;
+    case 'redirect':
+    default:
       setHeadComponents([
         <script
           key='check-ie'
@@ -60,8 +63,6 @@ export const onRenderBody = ({ setHeadComponents }: any, pluginOptions: PluginOp
           }}
         />,
       ]);
-      break;
-    default:
       break;
   }
 };
