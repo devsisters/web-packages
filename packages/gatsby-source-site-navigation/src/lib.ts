@@ -29,6 +29,7 @@ export function normalizeSocialServiceName(service: string) {
     'TWITTER',
     'WEIBO',
     'YOUTUBE',
+    'LINE',
   ] as const;
   type SupportedService = typeof supportedServiceNames[number];
 

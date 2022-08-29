@@ -23,7 +23,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
   createNodeId,
   createContentDigest,
 }, pluginOptions) => {
-    // Validated by Gatsby API
+  // Validated by Gatsby API
   const options = pluginOptions as unknown as ValidPluginOptions;
 
   if (node.internal.type !== 'PrismicSiteNavigation') {
@@ -46,9 +46,9 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({
     address: string,
     tel: string,
     fax: string,
-    items: Array<{ label: string, link: Link}>,
-    socials: Array<{ symbol: string, label: string, link: Link}>,
-    appInformation:  Array<{ googleAppId: string, appleAppId: string, onestoreAppId: string, onelink: Link }>,
+    items: Array<{ label: string, link: Link }>,
+    socials: Array<{ symbol: string, label: string, link: Link }>,
+    appInformation: Array<{ googleAppId: string, appleAppId: string, onestoreAppId: string, onelink: Link }>,
   };
   const body = {
     language: normalizeLanguage(node.lang as string),
@@ -114,6 +114,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       WEIBO
       BILIBILI
       NAVER_CAFE
+      LINE
     }
 
     enum MainSocialType {
