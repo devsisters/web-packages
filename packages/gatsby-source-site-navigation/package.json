@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-source-site-navigation",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "main": "index.js",
   "scripts": {
     "develop": "babel src --extensions .ts --out-dir . --watch --copy-files",

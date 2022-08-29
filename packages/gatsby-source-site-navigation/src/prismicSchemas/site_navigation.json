@@ -141,7 +141,7 @@
           "symbol" : {
             "type" : "Select",
             "config" : {
-              "options" : [ "twitter", "facebook", "youtube", "bilibili", "naver_cafe", "instagram", "weibo", "reddit", "discord", "forum" ],
+              "options" : [ "twitter", "facebook", "youtube", "bilibili", "naver_cafe", "instagram", "weibo", "reddit", "discord", "forum", "line" ],
               "label" : "symbol"
             }
           },
