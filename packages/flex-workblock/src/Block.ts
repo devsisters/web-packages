@@ -1,5 +1,5 @@
 import { intervalToDuration, format, Duration, isBefore, isAfter } from 'date-fns';
-import type { BlockSubtype, BlockType } from '../type';
+import type { BlockSubtype, BlockType } from '../types';
 
 export class Block {
   startAt: Date; // 00:00
