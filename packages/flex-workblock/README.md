@@ -59,13 +59,18 @@ export declare class BlockBundle {
   startAt: Date; //시작 시간
   endAt: Date; //종료 시간
   blocks: Block[]; //Block들
+  
   constructor(startAt: Date, endAt: Date);
+  
   addBlock(block: Block): void; //Block 한개 추가
   addBlocks(blocks: Block[]): void; //Block 여러개 추가
+  
   popBlock(indexOf: number): void;  //Block 한개 제거
   popBlocks(indexFrom: number, count: number): void; //Block 여러개 제거
+  
   getBlockAt(date: Date): Block; //해당 시간에 겹쳐있는 Block 반환
   getBlocksBetween(from: Date, to: Date): Block[]; //해당 시간들 사이에 겹쳐있는 Block들 반환
+  
   get didWork(): boolean; //이날의 근무기록이 있는지 T/F
 }
 ```
