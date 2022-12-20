@@ -6,7 +6,7 @@ notion: <https://www.notion.so/devsisters/js-d464981c0ce747349c2a54648f047f19>
 1. packages 경로에 만들고 싶은 패키지를 추가한다.
     - [참고](https://github.com/ryansonshine/typescript-npm-package-template)
 2. 배포 준비가 되었다면 `npm login`
-   - ~/.npmrc 경로에 authToken이 발급된다
+   - `~/.npmrc` 경로에 authToken이 발급된다
 3. `npm publish`
 
 
