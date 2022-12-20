@@ -5,5 +5,4 @@
 export type BlockType = 'None' | 'DayOff' | 'Rest' | 'Work';
 
 //Lunch: 점심
-
 export type BlockSubtype = 'Lunch';
