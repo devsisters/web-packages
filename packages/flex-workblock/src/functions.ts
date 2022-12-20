@@ -36,6 +36,7 @@ export function getLateInfo(bundle: BlockBundle, coretimeStartAt: Date, coretime
   const isLate = blockWhenCoretimeStartAnd1sec.type === 'None';
 
   const blockWhenCoretimeStart = bundle.getBlockAt(coretimeStartAt);
+  //blockWhenCoretimeStart.endAt < coretimeEndAt
   const lateTime = isBefore(blockWhenCoretimeStart.endAt, coretimeEndAt) ?
     intervalToDuration({ start: coretimeStartAt, end: blockWhenCoretimeStart.endAt }) :
     intervalToDuration({ start: coretimeStartAt, end: coretimeEndAt });

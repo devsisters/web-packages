@@ -7,6 +7,7 @@ export class BlockBundle {
   blocks: Block[];
 
   constructor(startAt: Date, endAt: Date) {
+    // endAt < startAt
     if (isBefore(endAt, startAt)) throw new RangeError('endAt은 startAt보다 커야합니다');
     this.startAt = startAt;
     this.endAt = endAt;
@@ -21,7 +22,7 @@ export class BlockBundle {
       //블럭을 꺼낸다.
       const blockOriginal = blocksBetween[0];
       const indexOf = this.blocks.indexOf(blockOriginal);
-      this.popBlock(indexOf);
+      this.removeBlock(indexOf);
       //블럭을 두개로 쪼갠다.
       const blockOriginalHead = new Block(blockOriginal.startAt, block.startAt, blockOriginal.type);
       const blockOriginalTail = new Block(block.endAt, blockOriginal.endAt, blockOriginal.type);
@@ -29,12 +30,11 @@ export class BlockBundle {
       this.blocks.splice(indexOf, 0, ...[blockOriginalHead, block, blockOriginalTail]);
     } else {
       if (blocksBetween.length === 0) {
-        console.log('!"');
-        //noop
+        throw new RangeError('block은 blockBundle의 startAt~endAt 구간 사이에 포함되어야 합니다.');
       }
       const firstBlockOriginal = blocksBetween[0];
       const indexOf = this.blocks.indexOf(firstBlockOriginal);
-      this.popBlocks(indexOf, blocksBetween.length);
+      this.removeBlocks(indexOf, blocksBetween.length);
       //일단 다 꺼냈음
 
       const firstBlockOriginalHead = new Block(firstBlockOriginal.startAt, block.startAt, firstBlockOriginal.type);
@@ -55,28 +55,28 @@ export class BlockBundle {
     }
   }
 
-  //
-  popBlock(indexOf: number): void {
-    this.blocks = this.blocks.filter((_, index) => index !== indexOf);
-    // this.blocks = this.blocks.splice(indexOf, 1);
-  }
-
-  popBlocks(indexFrom: number, count: number): void {
-    this.blocks = this.blocks.filter((_, index) => !(indexFrom <= index && index < indexFrom + count));
-    // this.blocks = this.blocks.splice(indexFrom, count);
-  }
-
   addBlocks(blocks: Block[]): void {
     for (const block of blocks) {
       this.addBlock(block);
     }
   }
 
+  removeBlock(indexOf: number): void {
+    this.blocks = this.blocks.filter((_, index) => index !== indexOf);
+    // this.blocks = this.blocks.splice(indexOf, 1);
+  }
+
+  removeBlocks(indexFrom: number, count: number): void {
+    this.blocks = this.blocks.filter((_, index) => !(indexFrom <= index && index < indexFrom + count));
+    // this.blocks = this.blocks.splice(indexFrom, count);
+  }
+
   //들어온 시간에 해당하는 블럭
   getBlockAt(date: Date): Block {
     for (const block of this.blocks) {
-      const isAnswer = !isBefore(date, block.startAt) && !isAfter(date, block.endAt);
-      if (isAnswer) return block;
+      // block.startAt <= date && date <= block.endAt
+      const isDateWithinBlock = !isBefore(date, block.startAt) && !isAfter(date, block.endAt);
+      if (isDateWithinBlock) return block;
     }
     throw new RangeError('해당 date에 해당하는 블럭이 없습니다');
   }
@@ -85,6 +85,7 @@ export class BlockBundle {
     let indexOfStartBlock;
     let indexOfEndBlock;
 
+    // from <= this.startAt
     if (!isBefore(this.startAt, from)) {
       indexOfStartBlock = 0;
     } else {
@@ -92,6 +93,7 @@ export class BlockBundle {
       indexOfStartBlock = this.blocks.indexOf(startBlock);
     }
 
+    // this.endAt <= to
     if (!isAfter(this.endAt, to)) {
       indexOfEndBlock = this.blocks.length - 1;
     } else {

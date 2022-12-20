@@ -20,7 +20,9 @@ export class Block {
   }
 
   overlappedDuration(interval: Interval): Duration {
+    // interval.start < this.start
     const start = isAfter(this.startAt, interval.start) ? this.startAt : interval.start;
+    // this.endAt < interval.end
     const end = isBefore(this.endAt, interval.end) ? this.endAt : interval.end;
 
     return intervalToDuration({ start, end });
