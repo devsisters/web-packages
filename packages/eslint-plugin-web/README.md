@@ -18,7 +18,7 @@ yarn add -D eslint typescript @devsisters/eslint-plugin-web
 
 | ESLint | @devsisters/eslint-plugin-web |
 |--------|-------------------------------|
-| >= 8.x | >= 1.3.0                      |
+| >= 8.x | >= 1.4.0                      |
 | < 8.x  | *                             |
 
 ### 프론트엔드 설정 예시:
