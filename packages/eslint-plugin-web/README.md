@@ -52,7 +52,7 @@ module.exports = {
     "typescriptreact",
   ],
   "eslint.options": {
-    "extentions": [
+    "extensions": [
       ".js",
       ".jsx",
       ".ts",
