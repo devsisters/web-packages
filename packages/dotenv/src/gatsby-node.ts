@@ -1,7 +1,7 @@
 import {
   Env,
   GetEnvOptions,
-  getEnv,
+  getEnv, GetEnvError,
 } from '.';
 
 export const onCreateWebpackConfig = ({ stage, actions, plugins }: any, pluginOptions: GetEnvOptions) => {
@@ -15,7 +15,7 @@ export const onCreateWebpackConfig = ({ stage, actions, plugins }: any, pluginOp
      * `-html`로 끝나는 stage에서만 에러를 출력하도록 하였습니다.
      */
     if (!(stage as string).endsWith('-html')) return;
-    for (const message of err.errors) console.error(`\x1b[41m\x1b[37m${message}\x1b[0m`);
+    for (const message of (err as GetEnvError).errors) console.error(`\x1b[41m\x1b[37m${message}\x1b[0m`);
     return;
   }
   actions.setWebpackConfig({

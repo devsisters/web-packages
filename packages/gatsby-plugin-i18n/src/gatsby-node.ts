@@ -28,12 +28,12 @@ function mustValidOptions(options: unknown): GatsbyI18nPluginOptions {
 }
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
-  node,
-  actions,
-  loadNodeContent,
-  createNodeId,
-  createContentDigest,
-}, options) => {
+                                                                 node,
+                                                                 actions,
+                                                                 loadNodeContent,
+                                                                 createNodeId,
+                                                                 createContentDigest,
+                                                               }, options) => {
   const i18nOptions = mustValidOptions(options);
   const { createNode, createParentChildLink } = actions;
 
@@ -66,7 +66,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql 
   const { pagesPath } = mustValidOptions(options || {});
   const { createPage } = actions;
 
-  const { data, errors } = await graphql(`
+  const { data, errors } = await graphql<{ allLocalization: { nodes: LocalizationData[] } }>(`
     {
       allLocalization {
         nodes {
@@ -83,13 +83,17 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql 
     throw new Error('Failed to query for allLocalizations');
   }
 
+  if (!data) {
+    throw new Error('allLocalizations data is empty')
+  }
+
   const filePaths = await readdir(pagesPath);
   const l10ns: LocalizationData[] = data.allLocalization.nodes
   const translations = Object.fromEntries(
-    l10ns.map(({locale, translations}) => [
+    l10ns.map(({ locale, translations }) => [
       locale,
       Object.fromEntries(
-        translations.map(({key, value}) => [key, value])
+        translations.map(({ key, value }) => [key, value])
       ) as LocalizedResources,
     ])
   ) as Translations;
