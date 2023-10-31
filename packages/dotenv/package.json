@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/dotenv",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "데브시스터즈 웹프로젝트에서 사용하는 환경변수 관리 프레임웍입니다.",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -17,8 +17,8 @@
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
-    "@types/node": "^10.17.6",
+    "@types/node": "^20.8.9",
     "@types/shelljs": "^0.8.6",
-    "typescript": "^3.7.3"
+    "typescript": "^5.2.2"
   }
 }

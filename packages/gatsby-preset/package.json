@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-preset",
-  "version": "2.5.1",
+  "version": "3.0.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "Devsisters Corp.",
@@ -13,28 +13,28 @@
     "access": "public"
   },
   "dependencies": {
-    "@devsisters/dotenv": "^1.0.0",
+    "@devsisters/dotenv": "^1.1.1",
     "@devsisters/gatsby-plugin-autotrack": "^2.0.0",
     "@devsisters/gatsby-plugin-google-analytics": "^2.0.0",
     "@devsisters/gatsby-plugin-i18n": "^4.0.0",
     "@devsisters/gatsby-plugin-matomo": "^1.1.0",
-    "@devsisters/gatsby-plugin-sentry": "^2.0.1",
-    "@devsisters/passport": "^1.6.1",
-    "@types/autoprefixer": "^9.5.0",
-    "autoprefixer": "^9.6.1",
-    "gatsby-plugin-linaria": "^1.2.2",
+    "@devsisters/gatsby-plugin-sentry": "^2.2.0",
+    "@devsisters/passport": "^2.0.2",
+    "@types/autoprefixer": "^10.2.0",
+    "autoprefixer": "^10.4.16",
+    "gatsby-plugin-linaria": "^4.0.2",
     "gatsby-plugin-module-resolver": "^1.0.3",
-    "gatsby-plugin-postcss": "^2.1.2",
-    "gatsby-plugin-react-helmet": "^3.1.2",
-    "gatsby-plugin-sitemap": "^2.2.3",
-    "gatsby-plugin-typescript": "^2.1.2",
-    "gatsby-source-filesystem": "^2.1.6",
-    "linaria": "^1.3.1",
-    "postcss-preset-env": "^6.7.0",
+    "gatsby-plugin-postcss": "^6.12.0",
+    "gatsby-plugin-react-helmet": "^6.12.0",
+    "gatsby-plugin-sitemap": "^6.12.3",
+    "gatsby-plugin-typescript": "^5.12.1",
+    "gatsby-source-filesystem": "^5.12.1",
+    "linaria": "^5.0.4",
+    "postcss-preset-env": "^9.2.0",
     "react-helmet": "^6.0.0-beta"
   },
   "devDependencies": {
-    "@types/node": "^12.6.8",
-    "typescript": "^3.5.3"
+    "@types/node": "^20.8.9",
+    "typescript": "^5.2.2"
   }
 }
