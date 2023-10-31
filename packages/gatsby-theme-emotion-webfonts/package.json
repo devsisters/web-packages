@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-theme-emotion-webfonts",
-  "version": "3.0.0",
+  "version": "3.0.0-rc",
   "description": "",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",

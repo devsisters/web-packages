@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-plugin-google-analytics",
-  "version": "3.0.0",
+  "version": "3.0.0-rc",
   "description": "",
   "main": "index.js",
   "typings": "index.d.ts",

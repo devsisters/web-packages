@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/dotenv",
-  "version": "2.0.0",
+  "version": "2.0.0-rc",
   "description": "데브시스터즈 웹프로젝트에서 사용하는 환경변수 관리 프레임웍입니다.",
   "main": "index.js",
   "typings": "index.d.ts",

@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-preset",
-  "version": "3.0.0",
+  "version": "3.0.0-rc",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "Devsisters Corp.",

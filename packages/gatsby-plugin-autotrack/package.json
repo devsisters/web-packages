@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-plugin-autotrack",
-  "version": "3.0.0",
+  "version": "3.0.0-rc",
   "description": "",
   "main": "index.js",
   "typings": "index.d.ts",

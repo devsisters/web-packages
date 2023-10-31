@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/cms-styles",
-  "version": "1.0.0",
+  "version": "1.0.0-rc",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
