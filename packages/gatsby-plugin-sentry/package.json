@@ -20,9 +20,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {
-    "gatsby": ">=2.0.0"
-  },
   "dependencies": {
     "@sentry/browser": "^5.28.0",
     "@sentry/react": "^5.28.0"

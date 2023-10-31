@@ -19,7 +19,6 @@
   "author": "Devsisters Corp.",
   "license": "UNLICENSED",
   "dependencies": {},
-  "peerDependencies": {},
   "devDependencies": {
     "typescript": "^4.2.3"
   }
