@@ -28,12 +28,12 @@ function mustValidOptions(options: unknown): GatsbyI18nPluginOptions {
 }
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
-                                                                 node,
-                                                                 actions,
-                                                                 loadNodeContent,
-                                                                 createNodeId,
-                                                                 createContentDigest,
-                                                               }, options) => {
+  node,
+  actions,
+  loadNodeContent,
+  createNodeId,
+  createContentDigest,
+}, options) => {
   const i18nOptions = mustValidOptions(options);
   const { createNode, createParentChildLink } = actions;
 
