@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-theme-stitches-webfonts",
-  "version": "0.0.1",
+  "version": "1.0.0-rc",
   "description": "",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -18,18 +18,14 @@
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {
-    "gatsby": ">=2.0.0",
-    "react": "^17.0.1 || ^16.8.0"
-  },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
-    "@stitches/react": "^0.2.0-canary.5",
-    "babel-preset-gatsby-package": "^0.5.3",
-    "gatsby": "^2.25.1",
-    "gatsby-theme-stitches": "^0.1.1",
-    "react": "^17.0.1",
-    "typescript": "^4.0.5"
+    "@stitches/react": "^1.2.8",
+    "babel-preset-gatsby-package": "^3.12.0",
+    "gatsby": "^5.12.9",
+    "gatsby-theme-stitches": "^1.0.1",
+    "react": "^18.2.0",
+    "typescript": "^5.2.2"
   }
 }

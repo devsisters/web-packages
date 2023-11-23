@@ -1,6 +1,6 @@
 import { IncomingHttpHeaders } from 'http';
-import { KeycloakInstance } from 'keycloak-js';
 import { Base64 } from 'js-base64';
+import Keycloak from 'keycloak-js';
 
 const _Token: typeof Token = require('keycloak-connect/middleware/auth-utils/token');
 export declare class Token {
@@ -128,15 +128,14 @@ export interface LoginConfig {
 export interface LoginResult extends AsyncIterableIterator<Token> {
     [Symbol.asyncIterator](): LoginResult;
     next(): Promise<IteratorResult<Token>>;
-    keycloak: KeycloakInstance;
+    keycloak: Keycloak;
 }
 export async function login(config: LoginConfig): Promise<LoginResult> {
-    const Keycloak = await import('keycloak-js');
     const {
         checkLoginIframe = false,
         ...keycloakProps
     } = config;
-    const keycloak = Keycloak({
+    const keycloak = new Keycloak({
         url: authServerUrl,
         realm: defaultRealm,
         ...keycloakProps,

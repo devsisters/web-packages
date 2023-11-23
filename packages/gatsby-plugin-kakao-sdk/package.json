@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-plugin-kakao-sdk",
-  "version": "1.0.1",
+  "version": "2.0.0-rc",
   "description": "",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -15,7 +15,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/react": "^16.7.17",
-    "typescript": "^3.2.2"
+    "@types/react": "^18.2.33",
+    "typescript": "^5.2.2"
   }
 }

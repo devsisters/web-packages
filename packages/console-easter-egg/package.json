@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/console-easter-egg",
-  "version": "1.1.2",
+  "version": "2.0.0-rc",
   "description": "Console easter egg libray at Devsisters Corp",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -19,8 +19,7 @@
   "author": "Devsisters Corp.",
   "license": "UNLICENSED",
   "dependencies": {},
-  "peerDependencies": {},
   "devDependencies": {
-    "typescript": "^4.2.3"
+    "typescript": "^5.2.2"
   }
 }

@@ -34,7 +34,7 @@ export const onClientEntry = () => {
     trackEvent('autotrack-click', 'click', element.id);
   }, true);
   { // 페이지의 어디까지 방문했는지 확인하기 위해서 location.hash 변동을 추적함.
-    let timerId: ReturnType<typeof window['setTimeout']>;
+    let timerId: number;
     onhashchange(hash => {
       window.clearTimeout(timerId);
       if (!hash) return;

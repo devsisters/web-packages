@@ -1,5 +1,5 @@
 import React from 'react';
-import { GatsbyBrowser, GatsbySSR } from 'gatsby';
+import { GatsbyBrowser, GatsbySSR, PageProps } from 'gatsby';
 
 import { i18nContext, I18nContext } from './index';
 
@@ -11,7 +11,10 @@ interface PageWrapperProps {
   pageContext: I18nContext;
 }
 
-const wrapPageElement: WrapPageElement = ({ element, props }) => {
+const wrapPageElement: WrapPageElement = ({ element, props }: {
+  element: React.ReactElement,
+  props: PageProps,
+}) => {
   const { pageContext } = props as PageWrapperProps;
   const { locale, translations } = pageContext;
 

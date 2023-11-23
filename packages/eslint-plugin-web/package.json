@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/eslint-plugin-web",
-  "version": "1.4.0",
+  "version": "2.0.0-rc",
   "description": "Devisisters' pre-configured ESLint settings.",
   "author": "Devsisters Corp.",
   "license": "UNLICENSED",
@@ -24,17 +24,11 @@
     "index.js",
     "configs"
   ],
-  "peerDependencies": {
-    "@babel/core": "^7.0.0",
-    "eslint": "^7 || ^8",
-    "react": ">=16.8.0",
-    "typescript": ">=3.7.0"
-  },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.3.0",
-    "@typescript-eslint/parser": "^5.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
     "confusing-browser-globals": "^1.0.10",
-    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.26.1",

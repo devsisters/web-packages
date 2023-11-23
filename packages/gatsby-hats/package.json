@@ -1,6 +1,6 @@
 {
   "name": "@devsisters/gatsby-hats",
-  "version": "2.2.1",
+  "version": "3.0.0-rc",
   "description": "",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -14,18 +14,18 @@
     "access": "public"
   },
   "dependencies": {
-    "@devsisters/dotenv": "^1.0.0",
-    "@devsisters/gatsby-plugin-autotrack": "^1.4.0",
-    "@devsisters/gatsby-plugin-google-analytics": "^1.0.1",
-    "@devsisters/gatsby-plugin-i18n": "^3.1.0",
-    "@devsisters/gatsby-plugin-matomo": "^1.1.0",
-    "@devsisters/gatsby-plugin-sentry": "^1.0.0",
-    "@devsisters/passport": "^1.2.0",
-    "gatsby-plugin-react-helmet": "^3.1.0",
-    "gatsby-plugin-sitemap": "^2.2.0",
+    "@devsisters/dotenv": "^2.0.0-rc",
+    "@devsisters/gatsby-plugin-autotrack": "^3.0.0-rc",
+    "@devsisters/gatsby-plugin-google-analytics": "^3.0.0-rc",
+    "@devsisters/gatsby-plugin-i18n": "^5.0.0-rc",
+    "@devsisters/gatsby-plugin-matomo": "^2.0.0-rc",
+    "@devsisters/gatsby-plugin-sentry": "^3.0.0-rc",
+    "@devsisters/passport": "^3.0.0-rc",
+    "gatsby-plugin-react-helmet": "^6.12.0",
+    "gatsby-plugin-sitemap": "^6.12.3",
     "react-helmet": "^6.0.0-beta"
   },
   "devDependencies": {
-    "typescript": "^3.5.2"
+    "typescript": "^5.2.2"
   }
 }

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "skipLibCheck": true,
     "module": "commonjs",
     "target": "es5",
     "jsx": "react",
@@ -14,7 +15,7 @@
     ],
     "removeComments": false,
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node"
   },
   "include": [
     "src/**/*"
